@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:project_shop/bindings/initial_binding.dart';
+import 'package:project_shop/routes/app_pages.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (_) => runApp(const MyApp()),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'FlutterApp'.tr,
+      theme: ThemeData(
+        textTheme: GoogleFonts.robotoTextTheme(),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.white,
+        ),
+      ),
+      locale: Get.deviceLocale,
+      fallbackLocale: Locale('en', 'US'),
+      initialBinding: InitialBinding(),
+      getPages: AppPages.routes,
+      initialRoute: AppPages.initial,
+    );
+  }
+}
