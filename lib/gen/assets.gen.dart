@@ -31,6 +31,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
 
+  /// File path: assets/icons/ic_arrow_right_new.svg
+  String get icArrowRightNew => 'assets/icons/ic_arrow_right_new.svg';
+
   /// List of all assets
   List<dynamic> get values => [
     icAddCart,
@@ -39,6 +42,7 @@ class $AssetsIconsGen {
     icHomeActive,
     icUser,
     notify,
+    icArrowRightNew
   ];
 }
 

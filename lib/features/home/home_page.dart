@@ -3,6 +3,7 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
+import 'package:project_shop/features/account/account_page.dart';
 import 'package:project_shop/features/home/home_controller.dart';
 import 'package:project_shop/features/login/login_page.dart';
 import 'package:project_shop/features/onboarding/onboarding_page.dart';
@@ -27,9 +28,9 @@ class HomePage extends GetView<HomeController> {
               case 0:
                 return LoginPage();
               case 1:
-                return SplashPage();
-              case 2:
                 return OnboardingPage();
+              case 2:
+                return AccountPage();
               default:
                 return Container();
             }
@@ -43,7 +44,6 @@ class HomePage extends GetView<HomeController> {
         snakeViewColor: ColorName.black.withOpacity(0.1),
         currentIndex: controller.initialIndex.value,
         selectedItemColor: ColorName.green1,
-
         onTap: (index) {
           controller.onTabChanged(index);
         },
@@ -52,10 +52,16 @@ class HomePage extends GetView<HomeController> {
               icon: IconWidget.ic24(path: Assets.icons.icHome),
               label: 'Trang chủ'),
           BottomNavigationBarItem(
-              icon: IconWidget.ic24(path: Assets.icons.icHome),
+              icon: IconWidget.ic24(
+                path: Assets.icons.notify,
+                color: ColorName.red5,
+              ),
               label: 'Sản Phẩm'),
           BottomNavigationBarItem(
-              icon: IconWidget.ic24(path: Assets.icons.icHome),
+              icon: IconWidget.ic24(
+                path: Assets.icons.icUser,
+                color: ColorName.red5,
+              ),
               label: 'Thông tin'),
         ],
       ),

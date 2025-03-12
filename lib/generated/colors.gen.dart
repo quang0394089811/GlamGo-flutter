@@ -294,4 +294,63 @@ class ColorName {
 
   /// Color: #FFF9ED
   static const Color brown = Color(0xFF703e0b);
+
+  /// Color: #FFF9ED
+  static const Color textLinkColor = Color(0xFF703e0b);
+
+  /// Color: #FFF9ED
+  static const Color blue17 = Color(0xFF703e0b);
+
+  static const grey3 = Color(0xFFBDBDBD);
+  static const grey4 = Color(0xffC1C9D2);
+  static const grey5 = Color(0xffBBBBBB);
+  static const grey6 = Color(0xffACACAC);
+  static const grey7 = Color(0xff979797);
+  static const grey8 = Color(0xff6D6D6D);
+  static const grey9 = Color(0xff6B7280);
+  static const grey10 = Color(0xff7B8794);
+  static const grey11 = Color(0xffA3AED0);
+  static const grey12 = Color(0xff9FA2B4);
+  static const grey13 = Color(0xff8E8EA1);
+  static const grey14 = Color(0xff4B506D);
+  static const grey15 = Color(0xff7A7C80);
+  static const grey16 = Color(0xfff9faff);
+  static const grey17 = Color(0xffB4BBC2);
+  static const grey18 = Color(0xFFF2F5F9);
+  static const grey19 = Color(0xFFB4C5D1);
+  static const grey20 = Color(0xFF808080);
+  static const grey21 = Color(0xFF757575);
+  static const grey22 = Color(0xFFDADADA);
+  static const grey23 = Color(0xFF777777);
+  static const grey24 = Color(0xFF9D9D9D);
+  static const grey25 = Color(0xFFF3F3F3);
+  static const grey26 = Color(0xFF8F9294);
+  static const grey27 = Color(0xFF8F9294);
+  static const grey28 = Color(0xFFE9E9E9);
+  static const grey29 = Color(0xFF73777A);
+  static const grey30 = Color(0xFFF4F7FA);
+  static const grey31 = Color(0xffE3E9EF);
+  static const grey32 = Color(0xffF7F7F7);
+  static const grey33 = Color(0xff798389);
+  static const grey34 = Color(0xff787880);
+  static const grey35 = Color(0xff73777A);
+  static const grey36 = Color(0xff4B5563);
+  static const grey37 = Color(0xff848e95);
+  static const grey38 = Color(0xffF9FAFB);
+  static const grey39 = Color(0xffD1D5DB);
+  static const grey40 = Color(0xffE5E7EB);
+  static const grey41 = Color(0xffE1E1E1);
+  static const grey42 = Color(0xffF5F5F5);
+  static const grey43 = Color(0xffCBCFD6);
+  static const grey44 = Color(0xff5c5f62);
+
+  // static const grey45 = Color(0xfff4f3f8);
+  static const grey45 = Color(0xff6B7280);
+  static const grey46 = Color(0xffE8EAEA);
+  static const grey47 = Color(0xff6B7280);
+  static const grey48 = Color(0xffd3d3d3);
+  static const grey49 = Color(0xff7F7F7F);
+  static const grey50 = Color(0xff9CA3AF);
+  static const grey51 = Color(0xff6b7280);
+  static const grey52 = Color(0xfff3f4f6);
 }

@@ -36,7 +36,7 @@ class SplashController extends BaseController with GetTickerProviderStateMixin {
 
     animationController.forward();
     Timer(
-      const Duration(seconds: 4),
+      const Duration(milliseconds: 3800),
       () {
         if (!isClosed) {
           Get.toNamed(Routes.home);
