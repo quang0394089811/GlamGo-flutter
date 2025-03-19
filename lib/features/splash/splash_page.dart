@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/features/splash/splash_controller.dart';
-import 'package:project_shop/generated/assets.gen.dart';
-import 'package:project_shop/generated/colors.gen.dart';
+import 'package:project_shop/gen/assets.gen.dart';
+import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
 class SplashPage extends GetView<SplashController> {
@@ -41,7 +41,7 @@ class SplashPage extends GetView<SplashController> {
                                 // ],
                                 ),
                             child: Image.asset(
-                              Assets.images.storeLogo,
+                              Assets.images.storeLogo.path,
                               width: 110,
                               height: 110,
                               fit: BoxFit.cover,

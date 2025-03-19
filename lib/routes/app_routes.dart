@@ -3,4 +3,5 @@ abstract class Routes{
   static const login = '/login';
   static const onboarding = '/onboarding';
   static const home = '/home';
+  static const initPage = '/navigation';
 }

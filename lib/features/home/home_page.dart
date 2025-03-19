@@ -1,90 +1,129 @@
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_shop/features/account/account_page.dart';
 import 'package:project_shop/features/home/home_controller.dart';
-import 'package:project_shop/features/login/login_page.dart';
-import 'package:project_shop/features/onboarding/onboarding_page.dart';
-import 'package:project_shop/features/splash/splash_page.dart';
+import 'package:project_shop/features/home/widget/infinite_carousel.dart';
+import 'package:project_shop/features/home/widget/products_item_view.dart';
 import 'package:project_shop/gen/assets.gen.dart';
-import 'package:project_shop/generated/colors.gen.dart';
-import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
+import 'package:project_shop/gen/colors.gen.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: PageView.builder(
-          controller: controller.pageController,
-          itemCount: 3,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            switch (index) {
-              case 0:
-                return LoginPage();
-              case 1:
-                return OnboardingPage();
-              case 2:
-                return AccountPage();
-              default:
-                return Container();
-            }
-          }),
-      bottomNavigationBar: SnakeNavigationBar.color(
-        behaviour: SnakeBarBehaviour.floating,
-        snakeShape: SnakeShape.circle,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        padding: EdgeInsets.all(30),
-        backgroundColor: ColorName.white,
-        snakeViewColor: ColorName.black.withOpacity(0.1),
-        currentIndex: controller.initialIndex.value,
-        selectedItemColor: ColorName.green1,
-        onTap: (index) {
-          controller.onTabChanged(index);
-        },
-        items: [
-          BottomNavigationBarItem(
-              icon: IconWidget.ic24(path: Assets.icons.icHome),
-              label: 'Trang chủ'),
-          BottomNavigationBarItem(
-              icon: IconWidget.ic24(
-                path: Assets.icons.notify,
-                color: ColorName.red5,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.32,
+                      child: InfiniteCarousel(),
+                    ),
+                    // SizedBox(height: 12),
+                    GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          mainAxisExtent: 250,
+                        ),
+                        itemBuilder: (context, index) {
+                          return ProductsItemView();
+                        })
+                  ],
+                ),
               ),
-              label: 'Sản Phẩm'),
-          BottomNavigationBarItem(
-              icon: IconWidget.ic24(
-                path: Assets.icons.icUser,
-                color: ColorName.red5,
+            ),
+            Positioned(top: 0, left: 0, right: 0, child: UserInformation())
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget UserInformation() {
+    return Container(
+      height: 45,
+      margin: EdgeInsets.symmetric(horizontal: 18),
+      decoration: BoxDecoration(
+          color: ColorName.white, borderRadius: BorderRadius.circular(8)),
+      child: Row(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+              image: DecorationImage(
+                image: AssetImage(Assets.images.avatar.path),
+                fit: BoxFit.fill,
               ),
-              label: 'Thông tin'),
+              color: Color(0xFFFFD88D),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(48),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    'Hello Vanish',
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.8700000047683716),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Welcom ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'to Sense',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
   }
-}
-
-class CustomBottomBarItem extends BottomBarItem {
-  final String label;
-
-  const CustomBottomBarItem(
-      {required super.inActiveItem,
-      required super.activeItem,
-      required this.label});
-
-  @override
-  Widget? get itemLabelWidget => Text(
-        label,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-        ),
-      );
 }

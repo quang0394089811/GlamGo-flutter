@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../generated/assets.gen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String label;

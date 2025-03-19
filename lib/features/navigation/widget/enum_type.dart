@@ -1,0 +1,1 @@
+enum MainScreenEnum { home, onboarding, account }

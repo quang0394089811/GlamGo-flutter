@@ -31,31 +31,45 @@ class SplashController extends BaseController with GetTickerProviderStateMixin {
         curve: Interval(0.0, 0.5, curve: Curves.easeInOut),
       ),
     );
-
-    startLoadingProgress();
-
     animationController.forward();
-    Timer(
-      const Duration(milliseconds: 3800),
-      () {
-        if (!isClosed) {
-          Get.toNamed(Routes.home);
-        }
-      },
-    );
+    
+    startLoadingProgress();
+    // Timer(
+    //   const Duration(milliseconds: 3800),
+    //   () {
+    //     if (!isClosed) {
+    //       Get.toNamed(Routes.initPage);
+    //     }
+    //   },
+    // );
   }
-
-  void startLoadingProgress() {
-    const totalSteps = 100;
-    const stepsDuration = Duration(milliseconds: 30);
-    _prosesTimer = Timer.periodic(stepsDuration, (timer) {
-      if (loadingProgress < 1.0) {
-        loadingProgress += 1 / totalSteps;
-      } else {
-        _prosesTimer?.cancel();
+void startLoadingProgress() {
+  const totalSteps = 100;
+  const stepsDuration = Duration(milliseconds: 30);
+  
+  _prosesTimer = Timer.periodic(stepsDuration, (timer) {
+    if (loadingProgress < 1.0) {
+      loadingProgress += 1 / totalSteps;
+    } else {
+      _prosesTimer?.cancel();
+      if (!isClosed) {
+        Get.toNamed(Routes.initPage); // Chuyển màn khi hoàn thành loading
       }
-    });
-  }
+    }
+  });
+}
+
+  // void startLoadingProgress() {
+  //   const totalSteps = 100;
+  //   const stepsDuration = Duration(milliseconds: 30);
+  //   _prosesTimer = Timer.periodic(stepsDuration, (timer) {
+  //     if (loadingProgress < 1.0) {
+  //       loadingProgress += 1 / totalSteps;
+  //     } else {
+  //       _prosesTimer?.cancel();
+  //     }
+  //   });
+  // }
 
   @override
   void onClose() {

@@ -1,8 +1,11 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:project_shop/features/home/home_binding.dart';
 import 'package:project_shop/features/home/home_page.dart';
 import 'package:project_shop/features/login/login_binding.dart';
 import 'package:project_shop/features/login/login_page.dart';
+import 'package:project_shop/features/navigation/main_screen_binding.dart';
+import 'package:project_shop/features/navigation/main_screen.dart';
 import 'package:project_shop/features/onboarding/onboarding_binding.dart';
 import 'package:project_shop/features/onboarding/onboarding_page.dart';
 import 'package:project_shop/features/splash/splash_binding.dart';
@@ -29,9 +32,18 @@ class AppPages {
       page: () => OnboardingPage(),
     ),
     GetPage(
+      name: Routes.initPage,
+      binding: MainScreenBinding(),
+      page: () => MainScreen(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(seconds: 1),
+    ),
+    GetPage(
       name: Routes.home,
       binding: HomeBinding(),
       page: () => HomePage(),
+      // transition: Transition.cupertino,
+      // transitionDuration: Duration(seconds: 1),
     ),
   ];
 }

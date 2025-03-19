@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:project_shop/data/api_service/api_service.dart';
 import 'package:project_shop/data/base/dio_builder.dart';
 import 'package:project_shop/data/secure_storage/secure_storage.dart';
+import 'package:project_shop/widgets/common/toast_widget.dart';
 
 class InitialBinding extends Bindings {
   @override
@@ -20,5 +21,6 @@ class InitialBinding extends Bindings {
     );
     final dio = DioBuilder.build(Get.find());
     Get.put(ApiService(dio));
+    Get.put(ToastWidget());
   }
 }

@@ -34,4 +34,8 @@ class Constant {
   static const String naPlaceHolder = "N/A";
 
   static const String emptyPlaceHolder = "--";
+
+  static const KEY_ACCESS_TOKEN = "key_access_token";
+
+  static const SHOW_SNACK_BAR_DURATION = 3;
 }

@@ -34,16 +34,44 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_arrow_right_new.svg
   String get icArrowRightNew => 'assets/icons/ic_arrow_right_new.svg';
 
+  /// File path: assets/icons/ic_logout.svg
+  String get icLogout => 'assets/icons/ic_logout.svg';
+
+  /// File path: assets/icons/ic_close.svg
+  String get icClose => 'assets/icons/ic_close.svg';
+
+  /// File path: assets/icons/ic_warning_toast.svg
+  String get icWarning => 'assets/icons/ic_warning_toast.svg';
+
+  /// File path: assets/icons/ic_success_toast.svg
+  String get icSuccess => 'assets/icons/ic_success_toast.svg';
+
+  /// File path: assets/icons/ic_fail_toast.svg
+  String get icFailToast => 'assets/icons/ic_fail_toast.svg';
+
+  /// File path: assets/icons/ic_left_arrow.svg
+  String get icLeftArrow => 'assets/icons/ic_left_arrow.svg';
+
+  /// File path: assets/icons/ic_star.svg
+  String get icStar => 'assets/icons/ic_star.svg';
+
+  /// File path: assets/icons/ic_heart.svg
+  String get icHeart => 'assets/icons/ic_heart.svg';
+
   /// List of all assets
   List<dynamic> get values => [
-    icAddCart,
-    icBackgroundLocation,
-    icHome,
-    icHomeActive,
-    icUser,
-    notify,
-    icArrowRightNew
-  ];
+        icAddCart,
+        icBackgroundLocation,
+        icHome,
+        icHomeActive,
+        icUser,
+        notify,
+        icArrowRightNew,
+        icLogout,
+        icClose,
+        icStar,
+        icHeart,
+      ];
 }
 
 class $AssetsImagesGen {
@@ -85,19 +113,36 @@ class $AssetsImagesGen {
   AssetGenImage get storeLogo =>
       const AssetGenImage('assets/images/store_logo.png');
 
+  /// File path: assets/images/intro_image.png
+  AssetGenImage get introImage =>
+      const AssetGenImage('assets/images/intro_image.png');
+
+  /// File path: assets/images/intro_image.png
+  AssetGenImage get initCarousel =>
+      const AssetGenImage('assets/images/luffy_gear5.jpg');
+
+  /// File path: assets/images/ic_heart.png
+  AssetGenImage get icHeartOutlined =>
+      const AssetGenImage('assets/images/ic_heart.png');
+
+  /// File path: assets/images/ic_heart_fill.png
+  AssetGenImage get icHeart =>
+      const AssetGenImage('assets/images/ic_heart_fill.png');
+
   /// List of all assets
   List<dynamic> get values => [
-    avatar,
-    banner,
-    biometric,
-    jinStoreLogo,
-    logo,
-    logoGreen,
-    logoIsland,
-    logoOrange,
-    logoWhite,
-    storeLogo,
-  ];
+        avatar,
+        banner,
+        biometric,
+        jinStoreLogo,
+        logo,
+        logoGreen,
+        logoIsland,
+        logoOrange,
+        logoWhite,
+        storeLogo,
+        introImage,
+      ];
 }
 
 class Assets {

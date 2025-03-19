@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_shop/bindings/initial_binding.dart';
@@ -17,20 +18,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'FlutterApp'.tr,
-      theme: ThemeData(
-        textTheme: GoogleFonts.robotoTextTheme(),
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.white,
-        ),
-      ),
-      locale: Get.deviceLocale,
-      fallbackLocale: Locale('en', 'US'),
-      initialBinding: InitialBinding(),
-      getPages: AppPages.routes,
-      initialRoute: AppPages.initial,
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      builder: (context, child) {
+        return GetMaterialApp(
+          // debugShowCheckedModeBanner: false,
+          title: 'FlutterApp'.tr,
+          theme: ThemeData(
+            textTheme: GoogleFonts.robotoTextTheme(),
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.transparent,
+            ),
+          ),
+          locale: Get.deviceLocale,
+          fallbackLocale: Locale('en', 'US'),
+          initialBinding: InitialBinding(),
+          getPages: AppPages.routes,
+          initialRoute: AppPages.initial,
+        );
+      },
     );
   }
 }

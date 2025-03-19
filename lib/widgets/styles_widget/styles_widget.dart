@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_shop/generated/colors.gen.dart';
-import 'package:project_shop/generated/fonts.gen.dart';
+import 'package:project_shop/gen/colors.gen.dart';
+import 'package:project_shop/gen/fonts.gen.dart';
 
 class Styles {
   static TextStyle getTextStyle({

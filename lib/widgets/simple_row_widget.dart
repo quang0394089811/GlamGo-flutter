@@ -3,14 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_shop/gen/assets.gen.dart';
-import 'package:project_shop/generated/colors.gen.dart';
+import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/utils/extension/extension.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-class SimpleRowSetting extends StatelessWidget{
-  const SimpleRowSetting({
+class SimpleRowWidget extends StatelessWidget {
+  const SimpleRowWidget({
     super.key,
     this.shape,
     this.imageFirst,
@@ -32,6 +33,10 @@ class SimpleRowSetting extends StatelessWidget{
     this.isWidthSizeBox,
     this.isUseSvg = true,
     this.pngPath = "",
+    this.maxLine,
+    this.textOverflow,
+    this.spacer,
+    this.isSpacer = true,
   });
 
   final ShapeBorder? shape;
@@ -44,13 +49,16 @@ class SimpleRowSetting extends StatelessWidget{
   final MainAxisAlignment? mainAxisAlignment;
   final Widget? widget;
   final bool isShowWidget;
-  final double? padding;
+  final double? padding, spacer;
   final bool disableOnclick;
   final Widget? icText;
   final TextAlign? textAlign;
   final double? isWidthSizeBox;
   final bool isUseSvg;
   final String pngPath;
+  final int? maxLine;
+  final TextOverflow? textOverflow;
+  final bool isSpacer;
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +73,10 @@ class SimpleRowSetting extends StatelessWidget{
           crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
           children: [
             isUseSvg
-                ? imageFirst.isNullOrEmpty
+                ? imageFirst.isEmptyOrNull
                     ? const SizedBox()
                     : SvgPicture.asset(
-                        imageFirst ?? '',
+                        imageFirst ?? Assets.icons.icUser,
                         color: color ?? ColorName.textLinkColor,
                         fit: BoxFit.scaleDown,
                         // width: 24.1.w,
@@ -96,6 +104,8 @@ class SimpleRowSetting extends StatelessWidget{
                           Styles.normalText(
                             color: ColorName.blue17,
                           ),
+                      overflow: textOverflow ?? TextOverflow.ellipsis,
+                      maxLines: maxLine ?? 1,
                       textAlign: textAlign ?? TextAlign.justify,
                     ),
                   ),
@@ -108,12 +118,17 @@ class SimpleRowSetting extends StatelessWidget{
               children: [
                 Text(
                   contentSecond ?? '',
-                  style: Styles.normalText(
-                    color: ColorName.grey9,
-                  ),
+                  style: styleContentSecond ??
+                      Styles.normalText(
+                        color: ColorName.grey9,
+                      ),
                 ),
                 SizedBox(
-                  width: contentSecond == null ? 0 : 8.w,
+                  width: isSpacer
+                      ? contentSecond == null
+                          ? 0
+                          : 8.w
+                      : spacer ?? 0,
                 ),
                 isShowWidget
                     ? widget ??
