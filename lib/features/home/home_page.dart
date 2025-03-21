@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/features/home/home_controller.dart';
 import 'package:project_shop/features/home/widget/infinite_carousel.dart';
-import 'package:project_shop/features/home/widget/products_item_view.dart';
+import 'package:project_shop/features/products/widget/products_item_view.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
+import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
+import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -22,7 +24,7 @@ class HomePage extends GetView<HomeController> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 40,
+                      height: 50,
                     ),
                     SizedBox(
                       height: Get.height * 0.32,
@@ -47,19 +49,23 @@ class HomePage extends GetView<HomeController> {
                 ),
               ),
             ),
-            Positioned(top: 0, left: 0, right: 0, child: UserInformation())
+            Positioned(top: 0, left: 0, right: 0, child: userInformation())
           ],
         ),
       ),
     );
   }
 
-  Widget UserInformation() {
+  Widget userInformation() {
     return Container(
-      height: 45,
-      margin: EdgeInsets.symmetric(horizontal: 18),
+      height: 50,
+      // margin: EdgeInsets.symmetric(horizontal: 18),
+      padding: EdgeInsets.only(right: 18, left: 18),
       decoration: BoxDecoration(
-          color: ColorName.white, borderRadius: BorderRadius.circular(8)),
+          color: ColorName.grey16,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(8.r),
+              bottomRight: Radius.circular(8.r))),
       child: Row(
         children: [
           Container(
@@ -121,7 +127,26 @@ class HomePage extends GetView<HomeController> {
                 ),
               ],
             ),
-          )
+          ),
+          Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                border: Border.all(color: ColorName.grey53),
+                borderRadius: BorderRadius.circular(40.r),
+              ),
+              child: DefaultInkWell(
+                  onTap: () {},
+                  child: IconWidget.ic24(path: Assets.icons.icSetting))),
+          SizedBox(width: 8),
+          Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                border: Border.all(color: ColorName.grey53),
+                borderRadius: BorderRadius.circular(40.r),
+              ),
+              child: DefaultInkWell(
+                  onTap: () {},
+                  child: IconWidget.ic24(path: Assets.icons.icSetting)))
         ],
       ),
     );

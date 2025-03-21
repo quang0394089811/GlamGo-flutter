@@ -40,9 +40,9 @@ class CommonSnackbar {
   String renderIcon(ToastStatus toastStatus) {
     switch (toastStatus) {
       case ToastStatus.warning:
-        return Assets.icons.icWarning;
+        return Assets.icons.icWarningToast;
       case ToastStatus.success:
-        return Assets.icons.icSuccess;
+        return Assets.icons.icSuccessToast;
       default:
         return Assets.icons.icFailToast;
     }

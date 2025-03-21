@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.robotoTextTheme(),
             useMaterial3: true,
             colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.transparent,
+              seedColor: Colors.white,
             ),
           ),
           locale: Get.deviceLocale,

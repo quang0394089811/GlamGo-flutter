@@ -6,6 +6,8 @@ import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/common/common_switch.dart';
 import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
+import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
+import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 import 'package:project_shop/widgets/simple_row_widget.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
@@ -21,16 +23,13 @@ class AccountPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
-              Container(
-                height: Get.height * 0.22,
-                color: ColorName.red5,
-              ),
+              _userInfo(),
               SizedBox(
                 height: 16.w,
               ),
-              _cardSupport(),
+              _cardAccount(),
               SizedBox(height: 16.w),
-              _cardSecond(),
+              _cardSupport(),
               SizedBox(
                 height: 16.w,
               ),
@@ -52,27 +51,86 @@ class AccountPage extends StatelessWidget {
     );
   }
 
+  Widget _userInfo() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      height: 100,
+      decoration: BoxDecoration(
+          color: ColorName.grey53, borderRadius: BorderRadius.circular(20)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Container(
+                    height: 60,
+                    width: 60,
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: ColorName.grey10),
+                        borderRadius: BorderRadius.circular(999)),
+                    child: Image.asset(Assets.images.avatar.path)),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Vanish Johnson',
+                        style: Styles.normalTextW700(size: 14.sp),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      Text(
+                        'Vanishjs@gmail.com',
+                        style: Styles.normalTextW400(size: 14.sp),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(6),
+            decoration: BoxDecoration(
+                color: ColorName.white,
+                borderRadius: BorderRadius.circular(24)),
+            child: DefaultInkWell(
+                child: IconWidget.ic26(path: Assets.icons.icEditDocument),
+                onTap: () {}),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _cardSupport() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.w, horizontal: 12.w),
       decoration: BoxDecoration(
-        color: ColorName.white,
-        borderRadius: BorderRadius.circular(10.r),
+        color: ColorName.grey53,
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('security'.tr, style: Styles.mediumTextW600()),
+          Text('Support'.tr, style: Styles.mediumTextW600()),
           SizedBox(height: 12.w),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Contact Us'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icContactBook,
           ),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Help and information'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icInformation,
           ),
           SimpleRowWidget(
             contentFirst: 'passWord'.tr,
@@ -99,37 +157,42 @@ class AccountPage extends StatelessWidget {
     );
   }
 
-  Widget _cardSecond() {
+  Widget _cardAccount() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.w, horizontal: 12.w),
       decoration: BoxDecoration(
-        color: ColorName.white,
-        borderRadius: BorderRadius.circular(10.r),
+        color: ColorName.grey53,
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('security'.tr, style: Styles.mediumTextW600()),
+          Text('Account'.tr, style: Styles.mediumTextW600()),
           SizedBox(height: 12.w),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Account Details'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icUser,
           ),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Notification'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icNotification,
           ),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Location Services'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icLocation,
           ),
           SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Delete Account'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icDeleteTableV1,
+          ),
+          SimpleRowWidget(
+            contentFirst: 'Logout'.tr,
+            onTap: () {},
+            imageFirst: Assets.icons.icPower,
           ),
         ],
       ),

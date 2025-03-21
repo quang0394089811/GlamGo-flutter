@@ -17,7 +17,7 @@ class ProductsItemView extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-              color: ColorName.grey42, borderRadius: BorderRadius.circular(12)),
+              color: ColorName.grey53, borderRadius: BorderRadius.circular(12)),
           child: Column(
             children: [
               Container(
@@ -32,7 +32,7 @@ class ProductsItemView extends StatelessWidget {
                     child: Image.asset(
                       Assets.images.initCarousel.path,
                       fit: BoxFit.cover,
-                    )),
+                    ),),
               ),
               SizedBox(height: 9),
               SimpleRowWidget(
@@ -85,7 +85,7 @@ class ProductsItemView extends StatelessWidget {
                     color: ColorName.white,
                     borderRadius: BorderRadius.circular(55)),
                 child: Image.asset(
-                  Assets.images.icHeartOutlined.path,
+                  Assets.images.icHeart.path,
                 )),
           ),
         ),

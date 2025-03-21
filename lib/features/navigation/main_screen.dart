@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/features/account/account_page.dart';
+import 'package:project_shop/features/category/category_page.dart';
 import 'package:project_shop/features/home/home_page.dart';
 import 'package:project_shop/features/navigation/main_screen_controller.dart';
 import 'package:project_shop/features/navigation/widget/enum_type.dart';
@@ -28,6 +29,8 @@ class MainScreen extends GetView<MainScreenController> {
               switch (MainScreenEnum.values[index]) {
                 case MainScreenEnum.home:
                   return HomePage();
+                case MainScreenEnum.category:
+                  return CategoryPage();
                 case MainScreenEnum.onboarding:
                   return OnboardingPage();
                 case MainScreenEnum.account:
@@ -41,7 +44,7 @@ class MainScreen extends GetView<MainScreenController> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
           padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 6.w),
           backgroundColor: ColorName.white,
-          snakeViewColor: ColorName.black.withOpacity(0.1),
+          snakeViewColor: ColorName.black.withOpacity(0.8),
           currentIndex: controller.currentPage.value.index,
           selectedItemColor: ColorName.red5,
           onTap: (index) {
@@ -52,7 +55,7 @@ class MainScreen extends GetView<MainScreenController> {
               icon: IconWidget.ic24(
                 path: _getIconPath(page),
                 color: controller.currentPage.value == page
-                    ? ColorName.red5
+                    ? ColorName.white
                     : ColorName.doveGrey,
               ),
               label: _getLabel(page),
@@ -67,9 +70,11 @@ class MainScreen extends GetView<MainScreenController> {
 String _getIconPath(MainScreenEnum page) {
   switch (page) {
     case MainScreenEnum.home:
-      return Assets.icons.icHome;
+      return Assets.icons.icHomeOutlined;
+    case MainScreenEnum.category:
+      return Assets.icons.icStore;
     case MainScreenEnum.onboarding:
-      return Assets.icons.notify;
+      return Assets.icons.icNotification;
     case MainScreenEnum.account:
       return Assets.icons.icUser;
   }
@@ -79,6 +84,8 @@ String _getLabel(MainScreenEnum page) {
   switch (page) {
     case MainScreenEnum.home:
       return 'Trang chủ';
+    case MainScreenEnum.category:
+      return 'Danh mục';
     case MainScreenEnum.onboarding:
       return 'Sản phẩm';
     case MainScreenEnum.account:
