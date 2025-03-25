@@ -185,6 +185,7 @@ class ColorName {
   static const orange14 = Color(0xff92400e);
   static const orange15 = Color(0xffF59E0B);
   static const orange16 = Color(0xffD97706);
+  static const orange17 = Color(0xffED7549);
 
   //White.
   static const white = Color(0xffffffff);

@@ -68,7 +68,7 @@ class SimpleRowWidget extends StatelessWidget {
       enabled: !disableOnclick,
       child: Padding(
         padding:
-            padding ?? EdgeInsets.symmetric(vertical: 0.w, horizontal: 4.w),
+            padding ?? EdgeInsets.symmetric(vertical: 12.w, horizontal: 4.w),
         child: Row(
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
           crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
@@ -80,16 +80,16 @@ class SimpleRowWidget extends StatelessWidget {
                         imageFirst ?? Assets.icons.icUser,
                         color: color ?? ColorName.textLinkColor,
                         fit: BoxFit.scaleDown,
-                        // width: 24.1.w,
-                        // height: 24.1.w,
+                        width: 24,
+                        height: 24,
                       )
                 : pngPath.isNullOrEmpty
                     ? const SizedBox()
                     : Image.asset(
                         pngPath,
                         fit: BoxFit.scaleDown,
-                        width: 24.w,
-                        height: 24.w,
+                        width: 24,
+                        height: 24,
                       ),
             SizedBox(
               width: isWidthSizeBox ?? 12.h,

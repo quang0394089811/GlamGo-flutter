@@ -123,24 +123,27 @@ class AccountPage extends StatelessWidget {
           Text('Support'.tr, style: Styles.mediumTextW600()),
           SizedBox(height: 12.w),
           SimpleRowWidget(
+            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             contentFirst: 'Contact Us'.tr,
             onTap: () {},
             imageFirst: Assets.icons.icContactBook,
           ),
           SimpleRowWidget(
+            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             contentFirst: 'Help and information'.tr,
             onTap: () {},
             imageFirst: Assets.icons.icInformation,
           ),
           SimpleRowWidget(
+            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             contentFirst: 'passWord'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icHomeOutlined,
           ),
           SimpleRowWidget(
             contentFirst: 'passWord'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHome,
+            imageFirst: Assets.icons.icHomeOutlined,
             widget: CommonSwitch(
               // value: controller.biometric,
               enableColor: ColorName.red5,

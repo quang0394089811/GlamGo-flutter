@@ -37,6 +37,7 @@ class ProductsItemView extends StatelessWidget {
               ),
               SizedBox(height: 9),
               SimpleRowWidget(
+                padding: EdgeInsets.symmetric(horizontal: 4),
                 textAlign: TextAlign.start,
                 isShowWidget: true,
                 imageFirst: null,
@@ -50,6 +51,7 @@ class ProductsItemView extends StatelessWidget {
                 contentSecond: '3.5',
               ),
               SimpleRowWidget(
+                padding: EdgeInsets.symmetric(horizontal: 4),
                 isShowWidget: true,
                 imageFirst: null,
                 contentFirst: '300\$',

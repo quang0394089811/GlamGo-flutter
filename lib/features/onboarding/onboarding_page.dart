@@ -21,7 +21,9 @@ class OnboardingPage extends GetView<OnboardingController> {
                   'https://img.freepik.com/premium-photo/cool-fashion-casual-men-outfit-wooden-table_93675-18917.jpg?semt=ais_hybri',
             ),
             Text('OnBoarding Page'),
-            ProductsItemWishlist()
+            ProductsItemWishlist(
+              isWishList: false,
+            )
           ],
         )),
       ),
