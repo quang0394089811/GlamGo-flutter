@@ -23,6 +23,13 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/*
+.ccls-cache
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
@@ -43,3 +50,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# CMake build artifacts
+/android/app/.cxx/
+
+# Configuration files
+.env
+config.json

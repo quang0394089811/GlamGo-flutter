@@ -49,7 +49,7 @@ class SimpleRowWidget extends StatelessWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final Widget? widget;
   final bool isShowWidget;
-  final double? padding, spacer;
+  final double? spacer;
   final bool disableOnclick;
   final Widget? icText;
   final TextAlign? textAlign;
@@ -59,6 +59,7 @@ class SimpleRowWidget extends StatelessWidget {
   final int? maxLine;
   final TextOverflow? textOverflow;
   final bool isSpacer;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class SimpleRowWidget extends StatelessWidget {
       enabled: !disableOnclick,
       child: Padding(
         padding:
-            EdgeInsets.symmetric(vertical: padding ?? 12.w, horizontal: 4.w),
+            padding ?? EdgeInsets.symmetric(vertical: 0.w, horizontal: 4.w),
         child: Row(
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
           crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,

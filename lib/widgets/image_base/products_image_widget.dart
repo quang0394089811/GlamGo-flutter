@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
+import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 
 class ProductsImageWidget extends StatelessWidget {
@@ -18,6 +19,8 @@ class ProductsImageWidget extends StatelessWidget {
     this.cacheKey,
     this.errorWidget,
     this.iconSize,
+    this.boxFit,
+    this.bgrColor,
   });
 
   final double? heightImage;
@@ -29,6 +32,8 @@ class ProductsImageWidget extends StatelessWidget {
   final String? icon;
   final String? cacheKey;
   final Widget? errorWidget;
+  final BoxFit? boxFit;
+  final Color? bgrColor;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,10 @@ class ProductsImageWidget extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsets.all(4),
-          color: ColorName.white,
+          decoration: BoxDecoration(
+            color: ColorName.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: CachedNetworkImage(
@@ -48,7 +56,7 @@ class ProductsImageWidget extends StatelessWidget {
                 width: widthImage ?? 200,
                 imageUrl: path,
                 filterQuality: FilterQuality.low,
-                fit: BoxFit.cover,
+                fit: boxFit ?? BoxFit.cover,
                 placeholder: (context, url) {
                   return Image.asset(
                     'assets/images/avatar.png',
@@ -63,22 +71,19 @@ class ProductsImageWidget extends StatelessWidget {
               )),
         ),
         Positioned(
-          top: 12,
-          right: 14,
+          top: 8,
+          right: 8,
           child: DefaultInkWell(
             // rippleColor: Colors.amber,
             onTap: onTap,
             child: Container(
-              width: iconSize ?? 40,
-              height: iconSize ?? 40,
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorName.white,
-                  borderRadius: BorderRadius.circular(55)),
-              child: Image.asset(
-                icon ?? Assets.images.icHeart.path,
-              ),
-            ),
+                width: iconSize ?? 40,
+                height: iconSize ?? 40,
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: bgrColor ?? ColorName.white,
+                    borderRadius: BorderRadius.circular(55)),
+                child: Image.asset(Assets.images.icHeart.path)),
           ),
         ),
       ],

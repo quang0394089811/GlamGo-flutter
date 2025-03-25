@@ -28,15 +28,15 @@ class ProductsItemView extends StatelessWidget {
                 height: 180,
                 width: Get.width,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      Assets.images.initCarousel.path,
-                      fit: BoxFit.cover,
-                    ),),
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    Assets.images.initCarousel.path,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               SizedBox(height: 9),
               SimpleRowWidget(
-                padding: 0,
                 textAlign: TextAlign.start,
                 isShowWidget: true,
                 imageFirst: null,
@@ -50,7 +50,6 @@ class ProductsItemView extends StatelessWidget {
                 contentSecond: '3.5',
               ),
               SimpleRowWidget(
-                padding: 0,
                 isShowWidget: true,
                 imageFirst: null,
                 contentFirst: '300\$',

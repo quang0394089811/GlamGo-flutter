@@ -94,36 +94,40 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
 
+  /// File path: assets/icons/ic_heart_outlined.svg
+  String get icHeartOutlined => 'assets/icons/ic_heart_outlined.svg';
+
   /// List of all assets
   List<dynamic> get values => [
-    icAddCart,
-    icArrowRightNew,
-    icBackgroundLocation,
-    icClose,
-    icContactBook,
-    icDelete,
-    icDeleteTableV1,
-    icEditDocument,
-    icFailToast,
-    icHeart,
-    icHome,
-    icHomeActive,
-    icHomeOutlined,
-    icInformation,
-    icLeftArrow,
-    icLocation,
-    icLogout,
-    icNotification,
-    icPower,
-    icRemoteTable,
-    icSetting,
-    icStar,
-    icStore,
-    icSuccessToast,
-    icUser,
-    icWarningToast,
-    notify,
-  ];
+        icAddCart,
+        icArrowRightNew,
+        icBackgroundLocation,
+        icClose,
+        icContactBook,
+        icDelete,
+        icDeleteTableV1,
+        icEditDocument,
+        icFailToast,
+        icHeart,
+        icHome,
+        icHomeActive,
+        icHomeOutlined,
+        icInformation,
+        icLeftArrow,
+        icLocation,
+        icLogout,
+        icNotification,
+        icPower,
+        icRemoteTable,
+        icSetting,
+        icStar,
+        icStore,
+        icSuccessToast,
+        icUser,
+        icWarningToast,
+        notify,
+        icHeartOutlined
+      ];
 }
 
 class $AssetsImagesGen {
@@ -149,6 +153,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/ic_location.png
   AssetGenImage get icLocation =>
       const AssetGenImage('assets/images/ic_location.png');
+
+  /// File path: assets/images/init_carousel.jpg
+  AssetGenImage get initCarousel =>
+      const AssetGenImage('assets/images/init_carousel.jpg');
 
   /// File path: assets/images/intro_image.png
   AssetGenImage get introImage =>
@@ -177,32 +185,28 @@ class $AssetsImagesGen {
   AssetGenImage get logoWhite =>
       const AssetGenImage('assets/images/logo_white.png');
 
-  /// File path: assets/images/init_carousel.jpg
-  AssetGenImage get initCarousel =>
-      const AssetGenImage('assets/images/init_carousel.jpg');
-
   /// File path: assets/images/store_logo.png
   AssetGenImage get storeLogo =>
       const AssetGenImage('assets/images/store_logo.png');
 
   /// List of all assets
   List<dynamic> get values => [
-    avatar,
-    banner,
-    biometric,
-    icHeart,
-    icHeartFill,
-    icLocation,
-    introImage,
-    jinStoreLogo,
-    logo,
-    logoGreen,
-    logoIsland,
-    logoOrange,
-    logoWhite,
-    initCarousel,
-    storeLogo,
-  ];
+        avatar,
+        banner,
+        biometric,
+        icHeart,
+        icHeartFill,
+        icLocation,
+        initCarousel,
+        introImage,
+        jinStoreLogo,
+        logo,
+        logoGreen,
+        logoIsland,
+        logoOrange,
+        logoWhite,
+        storeLogo,
+      ];
 }
 
 class Assets {
