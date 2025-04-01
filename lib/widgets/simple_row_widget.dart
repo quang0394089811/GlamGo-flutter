@@ -37,6 +37,7 @@ class SimpleRowWidget extends StatelessWidget {
     this.textOverflow,
     this.spacer,
     this.isSpacer = true,
+    this.iconSize,
   });
 
   final ShapeBorder? shape;
@@ -60,6 +61,7 @@ class SimpleRowWidget extends StatelessWidget {
   final TextOverflow? textOverflow;
   final bool isSpacer;
   final EdgeInsets? padding;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +82,16 @@ class SimpleRowWidget extends StatelessWidget {
                         imageFirst ?? Assets.icons.icUser,
                         color: color ?? ColorName.textLinkColor,
                         fit: BoxFit.scaleDown,
-                        width: 24,
-                        height: 24,
+                        width: iconSize ?? 24,
+                        height: iconSize ?? 24,
                       )
                 : pngPath.isNullOrEmpty
                     ? const SizedBox()
                     : Image.asset(
                         pngPath,
                         fit: BoxFit.scaleDown,
-                        width: 24,
-                        height: 24,
+                        width: iconSize ?? 24,
+                        height: iconSize ?? 24,
                       ),
             SizedBox(
               width: isWidthSizeBox ?? 12.h,

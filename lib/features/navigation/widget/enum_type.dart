@@ -1,1 +1,1 @@
-enum MainScreenEnum { home,category, onboarding, account }
+enum MainScreenEnum { home,category, wishlist, account }

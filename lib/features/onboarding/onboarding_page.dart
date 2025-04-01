@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/features/onboarding/onboarding_controller.dart';
-import 'package:project_shop/features/products/widget/products_item_wishlist.dart';
+import 'package:project_shop/features/products/widget/products_item_wish_list.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/image_base/products_image_widget.dart';

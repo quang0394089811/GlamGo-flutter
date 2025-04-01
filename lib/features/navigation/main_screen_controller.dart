@@ -10,7 +10,7 @@ class MainScreenController extends BaseController {
       PageController(initialPage: currentPage.value.index);
 
   final _isFloatingBar = false.obs;
-  get isFloatingBar => _isFloatingBar.value;
+  bool get isFloatingBar => _isFloatingBar.value;
 
   void onTabChanged(int index) {
     if (index >= 0 && index < MainScreenEnum.values.length) {

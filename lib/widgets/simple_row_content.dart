@@ -17,6 +17,7 @@ class SimpleRowContent extends StatelessWidget {
     this.secondStyle,
     this.widthSizeBox,
     this.widget,
+    this.isShowWidget = true,
   });
 
   final MainAxisAlignment? mainAxisAlignment;
@@ -27,32 +28,39 @@ class SimpleRowContent extends StatelessWidget {
   final TextStyle? firstStyle, secondStyle;
   final double? widthSizeBox;
   final Widget? widget;
+  final bool isShowWidget;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+    return Column(
       children: [
-        Flexible(
-          child: Text(
-            contentFirst ?? '300\$',
-            style: firstStyle ?? Styles.normalTextBold(size: 16),
-            overflow: firstTextOverflow ?? TextOverflow.ellipsis,
-          ),
-        ),
-        SizedBox(width: widthSizeBox ?? 0),
-        Flexible(
-          child: widget ??
-              Text(
-                contentSecond ?? '2026/PT-PTCCT',
-                style: secondStyle ??
-                    Styles.normalTextW500(color: ColorName.grey1, size: 16)
-                        .copyWith(
-                            decoration: TextDecoration.lineThrough,
-                            decorationColor: ColorName.orange17),
-                overflow: secondTextOverflow ?? TextOverflow.ellipsis,
+        Row(
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+          crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: Text(
+                contentFirst ?? '300\$',
+                style: firstStyle ?? Styles.normalTextBold(size: 16),
+                overflow: firstTextOverflow ?? TextOverflow.ellipsis,
               ),
+            ),
+            SizedBox(width: widthSizeBox ?? 0),
+            isShowWidget
+                ? Flexible(
+                    child: widget ??
+                        Text(
+                          contentSecond ?? '2026/PT-PTCCT',
+                          style: secondStyle ??
+                              Styles.normalTextW500(
+                                      color: ColorName.grey1, size: 16)
+                                  .copyWith(
+                                      decoration: TextDecoration.lineThrough,
+                                      decorationColor: ColorName.orange17),
+                          overflow: secondTextOverflow ?? TextOverflow.ellipsis,
+                        ))
+                : SizedBox(),
+          ],
         ),
       ],
     );

@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
+import 'package:project_shop/routes/app_routes.dart';
 import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/common/common_switch.dart';
 import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
+import 'package:project_shop/widgets/custom_divider.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 import 'package:project_shop/widgets/simple_row_widget.dart';
@@ -102,8 +104,10 @@ class AccountPage extends StatelessWidget {
                 color: ColorName.white,
                 borderRadius: BorderRadius.circular(24)),
             child: DefaultInkWell(
-                child: IconWidget.ic26(path: Assets.icons.icEditDocument),
-                onTap: () {}),
+                child: IconWidget.ic24(path: Assets.icons.icEditDocument),
+                onTap: () {
+                  Get.toNamed(Routes.cart);
+                }),
           )
         ],
       ),

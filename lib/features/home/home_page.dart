@@ -8,6 +8,7 @@ import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
+import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -30,7 +31,43 @@ class HomePage extends GetView<HomeController> {
                       height: Get.height * 0.32,
                       child: InfiniteCarousel(),
                     ),
-                    // SizedBox(height: 12),
+                    SizedBox(height: 12),
+                    Container(
+                      height: 40,
+                      padding: EdgeInsets.symmetric(vertical: 4),
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.categories.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              controller.onChangeIndex(index);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              margin: EdgeInsets.symmetric(horizontal: 4),
+                              decoration: BoxDecoration(
+                                  color: controller.selectedIndex == index
+                                      ? ColorName.black
+                                      : ColorName.white,
+                                  border: Border.all(color: ColorName.grey53),
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Center(
+                                  child: Text(
+                                controller.categories[index],
+                                style: Styles.normalTextW500(
+                                  color: controller.selectedIndex == index
+                                      ? ColorName.white
+                                      : ColorName.black,
+                                ),
+                              )),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 8),
                     GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -44,7 +81,7 @@ class HomePage extends GetView<HomeController> {
                         ),
                         itemBuilder: (context, index) {
                           return ProductsItemView();
-                        })
+                        },),
                   ],
                 ),
               ),

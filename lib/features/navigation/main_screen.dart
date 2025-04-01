@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/features/account/account_page.dart';
+import 'package:project_shop/features/cart/cart_page.dart';
 import 'package:project_shop/features/category/category_page.dart';
 import 'package:project_shop/features/home/home_page.dart';
 import 'package:project_shop/features/navigation/main_screen_controller.dart';
 import 'package:project_shop/features/navigation/widget/enum_type.dart';
 import 'package:project_shop/features/onboarding/onboarding_page.dart';
+import 'package:project_shop/features/wishlist/wish_list_page.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
@@ -31,8 +33,8 @@ class MainScreen extends GetView<MainScreenController> {
                   return HomePage();
                 case MainScreenEnum.category:
                   return CategoryPage();
-                case MainScreenEnum.onboarding:
-                  return OnboardingPage();
+                case MainScreenEnum.wishlist:
+                  return WishListPage();
                 case MainScreenEnum.account:
                   return AccountPage();
               }
@@ -73,8 +75,8 @@ String _getIconPath(MainScreenEnum page) {
       return Assets.icons.icHomeOutlined;
     case MainScreenEnum.category:
       return Assets.icons.icStore;
-    case MainScreenEnum.onboarding:
-      return Assets.icons.icNotification;
+    case MainScreenEnum.wishlist:
+      return Assets.icons.icHeartOutlined;
     case MainScreenEnum.account:
       return Assets.icons.icUser;
   }
@@ -86,8 +88,8 @@ String _getLabel(MainScreenEnum page) {
       return 'Trang chủ';
     case MainScreenEnum.category:
       return 'Danh mục';
-    case MainScreenEnum.onboarding:
-      return 'Sản phẩm';
+    case MainScreenEnum.wishlist:
+      return 'Yêu Thích';
     case MainScreenEnum.account:
       return 'Thông tin';
   }

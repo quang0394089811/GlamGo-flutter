@@ -63,7 +63,7 @@ dependencies:
 
 dev_dependencies:
   flutter_gen: ^5.8.0
-  flutter_gen_runner: ^5.8.0
+  flutter_gen_runner: ^5.10.0
   flutter_test:
     sdk: flutter
 
