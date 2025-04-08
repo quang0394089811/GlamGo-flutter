@@ -5,37 +5,37 @@ part 'base_response_model.g.dart';
 @JsonSerializable(genericArgumentFactories: true)
 class BaseResponseModel<T> {
   @JsonKey(name: 'current_page')
-  final int currentPage;
+  final int? currentPage;
 
-  final List<T> data;
+  final List<T>? data;
 
   @JsonKey(name: 'first_page_url')
-  final String firstPageUrl;
+  final String? firstPageUrl;
 
-  final int from;
+  final int? from;
 
   @JsonKey(name: 'last_page')
-  final int lastPage;
+  final int? lastPage;
 
   @JsonKey(name: 'last_page_url')
-  final String lastPageUrl;
+  final String? lastPageUrl;
 
-  final List<Link> links;
+  final List<Link>? links;
 
   @JsonKey(name: 'next_page_url')
   final String? nextPageUrl;
 
-  final String path;
+  final String? path;
 
   @JsonKey(name: 'per_page')
-  final int perPage;
+  final int? perPage;
 
   @JsonKey(name: 'prev_page_url')
   final String? prevPageUrl;
 
-  final int to;
+  final int? to;
 
-  final int total;
+  final int? total;
 
   BaseResponseModel({
     required this.currentPage,

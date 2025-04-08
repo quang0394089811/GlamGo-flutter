@@ -50,7 +50,7 @@ class CategoryController extends BaseController {
           isLoading.value = false;
         },
         (data) {
-          _listCategories.assignAll(data.data);
+          _listCategories.assignAll(data.data ?? []);
           isLoading.value = false;
         },
       );

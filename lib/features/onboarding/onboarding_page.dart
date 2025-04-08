@@ -53,8 +53,12 @@ class OnboardingScreen extends GetView<OnboardingController> {
                           (index) {
                             return AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
-                              width: controller.initialIndex.value == index ? 10 : 6,
-                              height: controller.initialIndex.value == index ? 10 : 6,
+                              width: controller.initialIndex.value == index
+                                  ? 10
+                                  : 6,
+                              height: controller.initialIndex.value == index
+                                  ? 10
+                                  : 6,
                               margin: const EdgeInsets.symmetric(
                                   vertical: 8, horizontal: 6),
                               decoration: BoxDecoration(
@@ -113,11 +117,14 @@ class OnboardingPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 50),
       child: Column(
         children: [
-          Image.asset(
-            image ?? Assets.images.introImage.path,
-            width: Get.width * 0.8,
-            height: Get.height * 0.6,
-            fit: BoxFit.contain,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(24),
+            child: Image.asset(
+              image ?? Assets.images.introImage.path,
+              width: Get.width * 0.9,
+              height: Get.height * 0.6,
+              fit: BoxFit.contain,
+            ),
           ),
           SizedBox(height: 8),
           Text(

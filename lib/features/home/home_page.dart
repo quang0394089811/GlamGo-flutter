@@ -51,10 +51,10 @@ class HomePage extends GetView<HomeController> {
                                   return ItemCategories(
                                     selectedIndex: controller.selectedIndex,
                                     index: index,
-                                    categoryName:
-                                        "Tất cả",
+                                    categoryName: "Tất cả",
                                     onTap: () {
-                                      controller.onChangeIndex(index);
+                                      controller.selectCategory(
+                                          index: index, categoryId: null);
                                     },
                                   );
                                 } else {
@@ -65,7 +65,9 @@ class HomePage extends GetView<HomeController> {
                                     index: index,
                                     categoryName: category.name,
                                     onTap: () {
-                                      controller.onChangeIndex(index);
+                                      controller.selectCategory(
+                                          index: index,
+                                          categoryId: category.id ?? 0);
                                     },
                                   );
                                 }
@@ -74,30 +76,36 @@ class HomePage extends GetView<HomeController> {
                           },
                         ),
                       ),
-                      GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: controller.listProducts.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
-                          mainAxisExtent: 250,
-                        ),
-                        itemBuilder: (context, index) {
-                          final products = controller.listProducts[index];
-                          return ProductsItemView(
-                            name: products.name,
-                            path:
-                                Utils.I.getImageFullPath(products.image ?? ''),
-                            price: products.price.toString(),
-                            priceSale: products.priceSale.toString(),
-                            onTap: () {},
-                            isWishList: true,
-                          );
-                        },
-                      ),
+                      Obx(() {
+                        if (controller.listDisplayedProducts.isEmpty) {
+                          return Center(child: Text('Không có sản phẩm nào'));
+                        }
+                        return GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: controller.listDisplayedProducts.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8,
+                            mainAxisExtent: 250,
+                          ),
+                          itemBuilder: (context, index) {
+                            final products = controller.listDisplayedProducts[index];
+                            return ProductsItemView(
+                              name: products.name,
+                              path: Utils.I
+                                  .getImageFullPath(products.image ?? ''),
+                              price: products.price.toString(),
+                              priceSale: products.priceSale.toString(),
+                              onTap: () {},
+                              isWishList: true,
+                            );
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ),

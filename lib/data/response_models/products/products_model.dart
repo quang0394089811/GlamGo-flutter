@@ -3,10 +3,10 @@ import 'package:project_shop/data/response_models/categories/category_model.dart
 
 part 'products_model.g.dart';
 
-double? stringToDouble(dynamic value) {
-  if (value == null) return null;
+double stringToDouble(dynamic value) {
+  if (value == null) return 0.0;
   if (value is num) return value.toDouble();
-  return double.tryParse(value.toString());
+  return double.tryParse(value.toString()) ?? 0.0;
 }
 
 @JsonSerializable()

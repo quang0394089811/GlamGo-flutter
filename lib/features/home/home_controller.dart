@@ -11,14 +11,6 @@ class HomeController extends BaseController {
 
   final _categoriesRepository = Get.find<CategoriesRepository>();
 
-  final List<String> categories = [
-    "Tất cả",
-    "Công nghệ",
-    "Thể thao",
-    "Âm nhạc",
-    "Thời trang",
-    "Du lịch"
-  ];
   final List<String> listImgCarousel = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
     'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -40,8 +32,17 @@ class HomeController extends BaseController {
   final RxList<CategoryModel> _listCategories = <CategoryModel>[].obs;
   List<CategoryModel> get listCategories => _listCategories;
 
-  final RxList<ProductsModel> _listProducts = <ProductsModel>[].obs;
-  List<ProductsModel> get listProducts => _listProducts;
+  final RxList<ProductsModel> _listAllProducts = <ProductsModel>[].obs;
+  List<ProductsModel> get listAllProducts => _listAllProducts;
+
+  final RxList<ProductsModel> _productsByCategory = <ProductsModel>[].obs;
+  List<ProductsModel> get productsByCategory => _productsByCategory;
+
+  List<ProductsModel> get listDisplayedProducts =>
+      _selectedIndex.value == 0 ? _listAllProducts : _productsByCategory;
+
+  final Map<int, List<ProductsModel>> _productsCacheByCategory = {};
+  final Map<int, Map<int, List<ProductsModel>>> _productsByCategoryAndPage = {};
 
   @override
   void onInit() {
@@ -50,8 +51,16 @@ class HomeController extends BaseController {
     super.onInit();
   }
 
-  void onChangeIndex(int index) {
+  void selectCategory({required int index, int? categoryId}) {
     _selectedIndex.value = index;
+
+    if (categoryId == null) {
+      if (_listAllProducts.isEmpty) {
+        getProducts();
+      }
+    } else {
+      getProductsByCategory(categoryId);
+    }
   }
 
   void jumpToPage(int index) {
@@ -68,7 +77,7 @@ class HomeController extends BaseController {
           isLoading.value = false;
         },
         (data) {
-          _listCategories.assignAll(data.data);
+          _listCategories.assignAll(data.data ?? []);
           isLoading.value = false;
         },
       );
@@ -88,13 +97,54 @@ class HomeController extends BaseController {
           isLoading.value = false;
         },
         (data) {
-          _listProducts.assignAll(data.data);
+          _listAllProducts.assignAll(data.data ?? []);
           isLoading.value = false;
         },
       );
-    } catch (e,stackTrace) {
+    } catch (e, stackTrace) {
       appException.value = AppException(message: e.toString());
-      print("Error Exception: ${stackTrace}");
+      print("Error Exception: $stackTrace");
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> getProductsByCategory(int? categoryId) async {
+    //phân trang
+    //   final hasCache = _productsCacheByCategoryAndPage[categoryId]?[page];
+    // if (hasCache != null) {
+    //   _productsByCategory.assignAll(hasCache);
+    //   return;
+    // }
+    if (categoryId != null &&
+        _productsCacheByCategory.containsKey(categoryId)) {
+      final cachedProducts = _productsCacheByCategory[categoryId] ?? [];
+      _productsByCategory.assignAll(cachedProducts);
+      return;
+    }
+
+    isLoading.value = true;
+    try {
+      final response =
+          await _categoriesRepository.getProductsByCategory(categoryId);
+      response.fold(
+        (error) {
+          appException.value = error;
+          _productsByCategory.clear();
+          isLoading.value = false;
+        },
+        (data) {
+          final products = data.data ?? [];
+          _productsByCategory.assignAll(products);
+          if (categoryId != null) {
+            _productsCacheByCategory[categoryId] = products;
+          }
+          isLoading.value = false;
+        },
+      );
+    } catch (e, stackTrace) {
+      print('Error StackTrace: $stackTrace');
+      appException.value = AppException(message: e.toString());
+      _productsByCategory.clear();
       isLoading.value = false;
     }
   }

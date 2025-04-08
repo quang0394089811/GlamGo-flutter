@@ -11,21 +11,21 @@ BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     BaseResponseModel<T>(
-      currentPage: (json['current_page'] as num).toInt(),
-      data: (json['data'] as List<dynamic>).map(fromJsonT).toList(),
-      firstPageUrl: json['first_page_url'] as String,
-      from: (json['from'] as num).toInt(),
-      lastPage: (json['last_page'] as num).toInt(),
-      lastPageUrl: json['last_page_url'] as String,
-      links: (json['links'] as List<dynamic>)
-          .map((e) => Link.fromJson(e as Map<String, dynamic>))
+      currentPage: (json['current_page'] as num?)?.toInt(),
+      data: (json['data'] as List<dynamic>?)?.map(fromJsonT).toList(),
+      firstPageUrl: json['first_page_url'] as String?,
+      from: (json['from'] as num?)?.toInt(),
+      lastPage: (json['last_page'] as num?)?.toInt(),
+      lastPageUrl: json['last_page_url'] as String?,
+      links: (json['links'] as List<dynamic>?)
+          ?.map((e) => Link.fromJson(e as Map<String, dynamic>))
           .toList(),
       nextPageUrl: json['next_page_url'] as String?,
-      path: json['path'] as String,
-      perPage: (json['per_page'] as num).toInt(),
+      path: json['path'] as String?,
+      perPage: (json['per_page'] as num?)?.toInt(),
       prevPageUrl: json['prev_page_url'] as String?,
-      to: (json['to'] as num).toInt(),
-      total: (json['total'] as num).toInt(),
+      to: (json['to'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BaseResponseModelToJson<T>(
@@ -34,7 +34,7 @@ Map<String, dynamic> _$BaseResponseModelToJson<T>(
 ) =>
     <String, dynamic>{
       'current_page': instance.currentPage,
-      'data': instance.data.map(toJsonT).toList(),
+      'data': instance.data?.map(toJsonT).toList(),
       'first_page_url': instance.firstPageUrl,
       'from': instance.from,
       'last_page': instance.lastPage,

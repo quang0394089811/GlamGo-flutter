@@ -82,7 +82,7 @@ class _ApiService implements ApiService {
     int? categoryId,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'category_id': categoryId};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -90,7 +90,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/products',
+            '/products/get-products-by-category',
             queryParameters: queryParameters,
             data: _data,
           )

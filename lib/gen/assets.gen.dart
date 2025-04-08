@@ -16,6 +16,9 @@ class $AssetsIconsGen {
   AssetGenImage get icAddCart =>
       const AssetGenImage('assets/icons/ic_add_cart.png');
 
+  /// File path: assets/icons/ic_arrow_right.svg
+  String get icArrowRight => 'assets/icons/ic_arrow_right.svg';
+
   /// File path: assets/icons/ic_arrow_right_new.svg
   String get icArrowRightNew => 'assets/icons/ic_arrow_right_new.svg';
 
@@ -96,13 +99,11 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
-  
-  /// File path: assets/icons/ic_arrow_right.svg
-  String get icArrowRight => 'assets/icons/ic_arrow_right.svg';
 
   /// List of all assets
   List<dynamic> get values => [
     icAddCart,
+    icArrowRight,
     icArrowRightNew,
     icBackgroundLocation,
     icClose,
@@ -130,7 +131,6 @@ class $AssetsIconsGen {
     icUser,
     icWarningToast,
     notify,
-    icArrowRight,
   ];
 }
 
