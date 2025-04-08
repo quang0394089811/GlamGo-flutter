@@ -9,11 +9,11 @@ class MainScreenBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => MainScreenController());
+    Get.lazyPut(()=>CategoriesRepository());
     Get.put(HomeController());
     Get.put(OnboardingController());
     // Get.put(CategoryController());
     Get.lazyPut(() => CategoryController());
-    Get.lazyPut(()=>CategoriesRepository());
     // Get.lazyPut(()=>OnboardingController());
   }
 }

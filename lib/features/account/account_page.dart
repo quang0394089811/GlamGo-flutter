@@ -178,12 +178,16 @@ class AccountPage extends StatelessWidget {
           SizedBox(height: 12.w),
           SimpleRowWidget(
             contentFirst: 'Account Details'.tr,
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(Routes.onboarding);
+            },
             imageFirst: Assets.icons.icUser,
           ),
           SimpleRowWidget(
             contentFirst: 'Notification'.tr,
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(Routes.onboarding);
+            },
             imageFirst: Assets.icons.icNotification,
           ),
           SimpleRowWidget(

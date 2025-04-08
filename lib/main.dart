@@ -4,10 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_shop/bindings/initial_binding.dart';
+import 'package:project_shop/data/secure_storage/share_preference_manager.dart';
 import 'package:project_shop/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  Get.put(SharedPreferencesManager(sharedPreferences: prefs));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(const MyApp()),
   );

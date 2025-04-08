@@ -96,6 +96,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
+  
+  /// File path: assets/icons/ic_arrow_right.svg
+  String get icArrowRight => 'assets/icons/ic_arrow_right.svg';
 
   /// List of all assets
   List<dynamic> get values => [
@@ -127,6 +130,7 @@ class $AssetsIconsGen {
     icUser,
     icWarningToast,
     notify,
+    icArrowRight,
   ];
 }
 

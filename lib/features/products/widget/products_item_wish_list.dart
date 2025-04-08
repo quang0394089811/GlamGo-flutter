@@ -43,7 +43,7 @@ class ProductsItemWishlist extends StatelessWidget {
             iconSize: 34,
             heightImage: 120,
             widthImage: Get.width * 0.46,
-            bgrColor: ColorName.grey53.withOpacity(0.5),
+            bgrColor: ColorName.white,
             boxFit: BoxFit.contain,
             path: path ??
                 'https://img.freepik.com/premium-photo/cool-fashion-casual-men-outfit-wooden-table_93675-18917.jpg?semt=ais_hybri',

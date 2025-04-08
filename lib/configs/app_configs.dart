@@ -1,4 +1,14 @@
 class AppConfigs {
-  // static String baseUrl = 'http://192.168.0.111:8000/api';
-  static String baseUrl = 'http://10.10.112.150:8000/api';
+  static String hostUrl = 'http://192.168.0.112:8000';
+  static String apiUrl = '/api/v1/';
+  static String baseUrl = '$hostUrl$apiUrl';
+}
+
+class CategoryAction {
+  static const getCategories = '/categories';
+}
+
+class ProductsAction {
+  static const getProducts = '/products';
+  static const getProductsByCategory = '/products/get-products-by-category';
 }

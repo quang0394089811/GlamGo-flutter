@@ -40,17 +40,19 @@ class SimpleRowContent extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                contentFirst ?? '300\$',
+                contentFirst ?? '--',
                 style: firstStyle ?? Styles.normalTextBold(size: 16),
                 overflow: firstTextOverflow ?? TextOverflow.ellipsis,
               ),
             ),
-            SizedBox(width: widthSizeBox ?? 0),
+            SizedBox(
+              width: widthSizeBox ?? 0,
+            ),
             isShowWidget
                 ? Flexible(
                     child: widget ??
                         Text(
-                          contentSecond ?? '2026/PT-PTCCT',
+                          contentSecond ?? '--',
                           style: secondStyle ??
                               Styles.normalTextW500(
                                       color: ColorName.grey1, size: 16)

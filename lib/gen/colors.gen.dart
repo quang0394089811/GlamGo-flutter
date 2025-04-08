@@ -141,6 +141,7 @@ class ColorName {
   static const blue28 = Color(0xff1F2937);
   static const blue29 = Color(0xff0284C7);
   static const blue30 = Color(0xffE0F2FE);
+  static const blue31 = Color(0xff0A0A17);
 
   /// Color green
   static const green1 = Color(0xff002817);
@@ -166,6 +167,7 @@ class ColorName {
   static const green21 = Color(0xff2DD4BF);
   static const green22 = Color(0xff16A34A);
   static const green23 = Color(0xffDCFCE7);
+  static const green24 = Color(0xff65B520);
 
   /// Color Orange
   static const orange1 = Color(0xff742400);
@@ -247,8 +249,6 @@ class ColorName {
   static const grey42 = Color(0xffF5F5F5);
   static const grey43 = Color(0xffCBCFD6);
   static const grey44 = Color(0xff5c5f62);
-
-  // static const grey45 = Color(0xfff4f3f8);
   static const grey45 = Color(0xff6B7280);
   static const grey46 = Color(0xffE8EAEA);
   static const grey47 = Color(0xff6B7280);
@@ -258,6 +258,7 @@ class ColorName {
   static const grey51 = Color(0xff6b7280);
   static const grey52 = Color(0xfff3f4f6);
   static const grey53 = Color(0xffECECEC);
+  static const grey54 = Color(0xfff4f3f8);
 
   //Black.
   static const black = Color(0xff000000);
@@ -287,6 +288,10 @@ class ColorName {
   static const yellow13 = Color(0xfffffbeb);
   static const yellow14 = Color(0xfffef3c7);
   static const yellow15 = Color(0xffb45309);
+  static const yellow16 = Color(0xffFFC22A);
+
+  // Purple
+  static const purple = Color(0xFF8888DF);
 
   static const sliver50 = Color(0xFFFAFAFA);
 
@@ -359,7 +364,7 @@ class ColorName {
 
   static Color get borderSolid => const Color(0xFFD1D5DB);
 
-    /// Light
+  /// Light
   static const primaryLightTextColor = Color(0xff1B1D1F);
   static const secondaryLightTextColor = Color(0xff44494D);
   static const uiElementLightColor = Color(0xff848E94);
@@ -424,6 +429,7 @@ class ColorName {
 
   /// Color: #F1F1F1
   static const Color seaShell = Color(0xFFF1F1F1);
+
   /// Color: #B0ABAB
   static const Color silverChalice = Color(0xFFB0ABAB);
 

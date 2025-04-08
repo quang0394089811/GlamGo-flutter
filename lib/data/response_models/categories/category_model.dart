@@ -4,7 +4,7 @@ import 'package:project_shop/data/base/base_response.dart';
 part 'category_model.g.dart';
 
 @JsonSerializable()
-class CategoryModel extends BaseDataModel {
+class CategoryModel {
   int? id;
   String? name;
   String? description;
@@ -33,8 +33,4 @@ class CategoryModel extends BaseDataModel {
 
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 
-  @override
-  BaseDataModel fromJson(Map<String, dynamic> json) {
-    return CategoryModel.fromJson(json);
-  }
 }

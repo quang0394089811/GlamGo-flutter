@@ -7,7 +7,6 @@ import 'package:project_shop/data/response_models/categories/category_model.dart
 
 class CategoryController extends BaseController {
   final _categoriesRepository = Get.find<CategoriesRepository>();
-  // final _categoriesRepository = Get.put(CategoriesRepository()
   final List<String> categories = [
     "Tất cả",
     "Công nghệ",

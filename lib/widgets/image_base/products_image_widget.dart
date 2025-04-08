@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
-import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
-import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 
 class ProductsImageWidget extends StatelessWidget {
   const ProductsImageWidget({
@@ -12,8 +10,6 @@ class ProductsImageWidget extends StatelessWidget {
     this.heightImage,
     this.widthImage,
     this.onTap,
-    this.stackTop,
-    this.stackRight,
     required this.path,
     this.icon,
     this.cacheKey,
@@ -21,26 +17,27 @@ class ProductsImageWidget extends StatelessWidget {
     this.iconSize,
     this.boxFit,
     this.bgrColor,
+    this.colorIcon,
+    this.isWishList = true,
   });
 
   final double? heightImage;
   final double? widthImage;
   final VoidCallback? onTap;
-  final double? stackTop, stackRight;
   final double? iconSize;
   final String path;
   final String? icon;
   final String? cacheKey;
   final Widget? errorWidget;
   final BoxFit? boxFit;
-  final Color? bgrColor;
+  final Color? bgrColor, colorIcon;
+  final bool isWishList;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.all(4),
           decoration: BoxDecoration(
             color: ColorName.white,
             borderRadius: BorderRadius.circular(20),
@@ -52,8 +49,8 @@ class ProductsImageWidget extends StatelessWidget {
                 cacheKey: cacheKey,
                 fadeInDuration: const Duration(seconds: 0),
                 fadeOutDuration: const Duration(seconds: 0),
-                height: heightImage ?? 250,
-                width: widthImage ?? 200,
+                height: heightImage ?? Get.height,
+                width: widthImage ?? Get.width,
                 imageUrl: path,
                 filterQuality: FilterQuality.low,
                 fit: boxFit ?? BoxFit.cover,
@@ -73,17 +70,32 @@ class ProductsImageWidget extends StatelessWidget {
         Positioned(
           top: 8,
           right: 8,
-          child: DefaultInkWell(
+          child: GestureDetector(
             // rippleColor: Colors.amber,
             onTap: onTap,
             child: Container(
-                width: iconSize ?? 40,
-                height: iconSize ?? 40,
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: bgrColor ?? ColorName.white,
-                    borderRadius: BorderRadius.circular(55)),
-                child: Image.asset(Assets.images.icHeart.path)),
+              width: iconSize ?? 40,
+              height: iconSize ?? 40,
+              padding: EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: bgrColor ?? ColorName.white,
+                borderRadius: BorderRadius.circular(55),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: Offset(1, 3),
+                  ),
+                ],
+              ),
+              child: isWishList
+                  ? Image.asset(Assets.images.icHeart.path)
+                  : Image.asset(
+                      Assets.images.icHeartFill.path,
+                      color: colorIcon ?? ColorName.red5,
+                    ),
+            ),
           ),
         ),
       ],

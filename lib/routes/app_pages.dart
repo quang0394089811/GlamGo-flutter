@@ -12,6 +12,8 @@ import 'package:project_shop/features/navigation/main_screen_binding.dart';
 import 'package:project_shop/features/navigation/main_screen.dart';
 import 'package:project_shop/features/onboarding/onboarding_binding.dart';
 import 'package:project_shop/features/onboarding/onboarding_page.dart';
+import 'package:project_shop/features/products/products_detail/product_detail_binding.dart';
+import 'package:project_shop/features/products/products_detail/product_detail_page.dart';
 import 'package:project_shop/features/splash/splash_binding.dart';
 import 'package:project_shop/features/splash/splash_page.dart';
 import 'package:project_shop/features/wishlist/wish_list_binding.dart';
@@ -35,7 +37,7 @@ class AppPages {
     GetPage(
       name: Routes.onboarding,
       binding: OnboardingBinding(),
-      page: () => OnboardingPage(),
+      page: () => OnboardingScreen(),
     ),
     GetPage(
       name: Routes.initPage,
@@ -69,6 +71,13 @@ class AppPages {
       name: Routes.categories,
       binding: CategoryBinding(),
       page: () => CategoryPage(),
+      // transition: Transition.cupertino,
+      // transitionDuration: Duration(seconds: 1),
+    ),
+    GetPage(
+      name: Routes.productDetail,
+      binding: ProductDetailBinding(),
+      page: () => ProductDetailPage(),
       // transition: Transition.cupertino,
       // transitionDuration: Duration(seconds: 1),
     ),

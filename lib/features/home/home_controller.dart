@@ -1,9 +1,15 @@
 import 'package:get/get.dart';
+import 'package:project_shop/base/app_exception.dart';
 import 'package:project_shop/base/base_controller.dart';
+import 'package:project_shop/data/repository/categories_action/categories_repository.dart';
+import 'package:project_shop/data/response_models/categories/category_model.dart';
+import 'package:project_shop/data/response_models/products/products_model.dart';
 
 class HomeController extends BaseController {
   final _currentIndex = 0.obs;
   get currentIndex => _currentIndex.value;
+
+  final _categoriesRepository = Get.find<CategoriesRepository>();
 
   final List<String> categories = [
     "Tất cả",
@@ -28,12 +34,68 @@ class HomeController extends BaseController {
   final _isSelected = false.obs;
   get isSelected => _isSelected.value;
 
+  @override
+  final RxBool isLoading = false.obs;
+
+  final RxList<CategoryModel> _listCategories = <CategoryModel>[].obs;
+  List<CategoryModel> get listCategories => _listCategories;
+
+  final RxList<ProductsModel> _listProducts = <ProductsModel>[].obs;
+  List<ProductsModel> get listProducts => _listProducts;
+
+  @override
+  void onInit() {
+    getCategories();
+    getProducts();
+    super.onInit();
+  }
+
   void onChangeIndex(int index) {
     _selectedIndex.value = index;
-    // selectedIndex.value = _isSelected.value;
   }
 
   void jumpToPage(int index) {
     _currentIndex.value = index;
+  }
+
+  Future<void> getCategories() async {
+    isLoading.value = true;
+    try {
+      final response = await _categoriesRepository.getCategories();
+      response.fold(
+        (error) {
+          appException.value = error;
+          isLoading.value = false;
+        },
+        (data) {
+          _listCategories.assignAll(data.data);
+          isLoading.value = false;
+        },
+      );
+    } catch (e) {
+      appException.value = AppException(message: e.toString());
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> getProducts() async {
+    isLoading.value = true;
+    try {
+      final response = await _categoriesRepository.getProducts();
+      response.fold(
+        (error) {
+          appException.value = error;
+          isLoading.value = false;
+        },
+        (data) {
+          _listProducts.assignAll(data.data);
+          isLoading.value = false;
+        },
+      );
+    } catch (e,stackTrace) {
+      appException.value = AppException(message: e.toString());
+      print("Error Exception: ${stackTrace}");
+      isLoading.value = false;
+    }
   }
 }

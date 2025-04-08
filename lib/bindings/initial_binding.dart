@@ -19,6 +19,7 @@ class InitialBinding extends Bindings {
         ),
       ),
     );
+
     final dio = DioBuilder.build(Get.find());
     Get.put(ApiService(dio, baseUrl: AppConfigs.baseUrl));
     Get.put(ToastWidget());
