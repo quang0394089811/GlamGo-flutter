@@ -20,7 +20,8 @@ class HomePage extends GetView<HomeController> {
     return SafeArea(
       child: Scaffold(
         body: Obx(() {
-          if (controller.isLoading.value) {
+          if (controller.isLoading.value ||
+              controller.isLoadingProduct) {
             return Center(child: CircularProgressIndicator());
           }
           return Stack(
@@ -53,8 +54,7 @@ class HomePage extends GetView<HomeController> {
                                     index: index,
                                     categoryName: "Tất cả",
                                     onTap: () {
-                                      controller.selectCategory(
-                                          index: index, categoryId: null);
+                                      controller.selectCategory(index: index);
                                     },
                                   );
                                 } else {
@@ -93,7 +93,8 @@ class HomePage extends GetView<HomeController> {
                             mainAxisExtent: 250,
                           ),
                           itemBuilder: (context, index) {
-                            final products = controller.listDisplayedProducts[index];
+                            final products =
+                                controller.listDisplayedProducts[index];
                             return ProductsItemView(
                               name: products.name,
                               path: Utils.I
@@ -212,9 +213,12 @@ class HomePage extends GetView<HomeController> {
               border: Border.all(color: ColorName.grey53),
               borderRadius: BorderRadius.circular(40.r),
             ),
-            child: DefaultInkWell(
+            child: GestureDetector(
               onTap: () {},
-              child: IconWidget.ic24(path: Assets.icons.icSetting),
+              child: IconWidget.ic24(
+                path: Assets.icons.icShoppingBag,
+                color: ColorName.black,
+              ),
             ),
           ),
         ],

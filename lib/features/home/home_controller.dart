@@ -29,6 +29,12 @@ class HomeController extends BaseController {
   @override
   final RxBool isLoading = false.obs;
 
+  final _isLoadingProduct = false.obs;
+  bool get isLoadingProduct => _isLoadingProduct.value;
+
+  final _isLoadingProductByCa = false.obs;
+  bool get isLoadingProductByCa => _isLoadingProductByCa.value;
+
   final RxList<CategoryModel> _listCategories = <CategoryModel>[].obs;
   List<CategoryModel> get listCategories => _listCategories;
 
@@ -88,23 +94,23 @@ class HomeController extends BaseController {
   }
 
   Future<void> getProducts() async {
-    isLoading.value = true;
+    _isLoadingProduct.value = true;
     try {
       final response = await _categoriesRepository.getProducts();
       response.fold(
         (error) {
           appException.value = error;
-          isLoading.value = false;
+          _isLoadingProduct.value = false;
         },
         (data) {
           _listAllProducts.assignAll(data.data ?? []);
-          isLoading.value = false;
+          _isLoadingProduct.value = false;
         },
       );
     } catch (e, stackTrace) {
       appException.value = AppException(message: e.toString());
       print("Error Exception: $stackTrace");
-      isLoading.value = false;
+      _isLoadingProduct.value = false;
     }
   }
 
@@ -122,7 +128,7 @@ class HomeController extends BaseController {
       return;
     }
 
-    isLoading.value = true;
+    _isLoadingProductByCa.value = true;
     try {
       final response =
           await _categoriesRepository.getProductsByCategory(categoryId);
@@ -130,7 +136,7 @@ class HomeController extends BaseController {
         (error) {
           appException.value = error;
           _productsByCategory.clear();
-          isLoading.value = false;
+          _isLoadingProductByCa.value = false;
         },
         (data) {
           final products = data.data ?? [];
@@ -138,14 +144,14 @@ class HomeController extends BaseController {
           if (categoryId != null) {
             _productsCacheByCategory[categoryId] = products;
           }
-          isLoading.value = false;
+          _isLoadingProductByCa.value = false;
         },
       );
     } catch (e, stackTrace) {
       print('Error StackTrace: $stackTrace');
       appException.value = AppException(message: e.toString());
       _productsByCategory.clear();
-      isLoading.value = false;
+      _isLoadingProductByCa.value = false;
     }
   }
 }

@@ -100,6 +100,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
 
+    /// File path: assets/icons/ic_add_to_cart.svg
+  String get icAddToCart => 'assets/icons/ic_add_to_cart.svg';
+
+    /// File path: assets/icons/ic_shopping_bag.svg
+  String get icShoppingBag => 'assets/icons/ic_shopping_bag.svg';
+
   /// List of all assets
   List<dynamic> get values => [
     icAddCart,
@@ -131,6 +137,8 @@ class $AssetsIconsGen {
     icUser,
     icWarningToast,
     notify,
+    icAddToCart,
+    icShoppingBag,
   ];
 }
 
