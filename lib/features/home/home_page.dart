@@ -11,6 +11,7 @@ import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/routes/app_routes.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
+import 'package:project_shop/widgets/shimmer/shimmer_products.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -20,9 +21,8 @@ class HomePage extends GetView<HomeController> {
     return SafeArea(
       child: Scaffold(
         body: Obx(() {
-          if (controller.isLoading.value ||
-              controller.isLoadingProduct) {
-            return Center(child: CircularProgressIndicator());
+          if (controller.isLoading.value || controller.isLoadingProduct) {
+            return ShimmerProducts();
           }
           return Stack(
             children: [
@@ -95,14 +95,18 @@ class HomePage extends GetView<HomeController> {
                           itemBuilder: (context, index) {
                             final products =
                                 controller.listDisplayedProducts[index];
-                            return ProductsItemView(
-                              name: products.name,
-                              path: Utils.I
-                                  .getImageFullPath(products.image ?? ''),
-                              price: products.price.toString(),
-                              priceSale: products.priceSale.toString(),
-                              onTap: () {},
-                              isWishList: true,
+                            return GestureDetector(
+                              onTap: () {
+                              },
+                              child: ProductsItemView(
+                                name: products.name,
+                                path: Utils.I
+                                    .getImageFullPath(products.image ?? ''),
+                                price: products.price.toString(),
+                                priceSale: products.priceSale.toString(),
+                                onTap: () {},
+                                isWishList: true,
+                              ),
                             );
                           },
                         );
@@ -200,9 +204,7 @@ class HomePage extends GetView<HomeController> {
               borderRadius: BorderRadius.circular(40.r),
             ),
             child: DefaultInkWell(
-              onTap: () {
-                Get.toNamed(Routes.productDetail);
-              },
+              onTap: () {},
               child: IconWidget.ic24(path: Assets.icons.icSetting),
             ),
           ),

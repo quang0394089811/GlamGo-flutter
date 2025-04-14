@@ -14,7 +14,8 @@ class CategoryPage extends GetView<CategoryController> {
       child: Scaffold(
         body: Obx(
           () {
-            if (controller.isLoading.value) {
+            if (controller.isLoading.value ||
+              controller.isLoadingProduct) {
               return Center(child: CircularProgressIndicator());
             }
 
@@ -68,8 +69,6 @@ class CategoryPage extends GetView<CategoryController> {
                       }
                       return Expanded(
                         child: GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
                           itemCount: controller.listDisplayedProducts.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(

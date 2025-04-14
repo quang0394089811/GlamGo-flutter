@@ -10,6 +10,7 @@ import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
 import 'package:project_shop/widgets/custom_divider.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
+import 'package:project_shop/widgets/shimmer/shimmer_products.dart';
 import 'package:project_shop/widgets/simple_row_widget.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
@@ -179,13 +180,13 @@ class AccountPage extends StatelessWidget {
           SimpleRowWidget(
             contentFirst: 'Account Details'.tr,
             onTap: () {
+              Navigator.push(Get.context!,  MaterialPageRoute(builder: (context) => ShimmerProducts()));
             },
             imageFirst: Assets.icons.icUser,
           ),
           SimpleRowWidget(
             contentFirst: 'Notification'.tr,
-            onTap: () {
-            },
+            onTap: () {},
             imageFirst: Assets.icons.icNotification,
           ),
           SimpleRowWidget(
