@@ -106,6 +106,9 @@ class $AssetsIconsGen {
     /// File path: assets/icons/ic_shopping_bag.svg
   String get icShoppingBag => 'assets/icons/ic_shopping_bag.svg';
 
+    /// File path: assets/icons/ic_clear.svg
+  String get icClear => 'assets/icons/ic_clear.svg';
+
   /// List of all assets
   List<dynamic> get values => [
     icAddCart,

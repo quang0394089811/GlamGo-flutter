@@ -259,6 +259,7 @@ class ColorName {
   static const grey52 = Color(0xfff3f4f6);
   static const grey53 = Color(0xffECECEC);
   static const grey54 = Color(0xfff4f3f8);
+  static const grey55 = Color(0xff9e9e9e);
 
   //Black.
   static const black = Color(0xff000000);

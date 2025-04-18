@@ -287,4 +287,188 @@ class Styles {
           fontWeight: fWeight,
           fontStyle: FontStyle.italic,
           fontFamily: FontFamily.inter);
+            ///Border TextField.
+  static OutlineInputBorder inputBorder4(
+      {Color color = ColorName.white4,
+      double width = 1,
+      double radius = 10,
+      double gapPadding = 8}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(radius),
+      gapPadding: gapPadding,
+      borderSide: BorderSide(color: color, width: width),
+    );
+  }
+
+  static InputDecoration inputDecoration1(
+      {String? labelText,
+      String? hintText = "",
+      TextStyle? hintStyle,
+      Widget? label,
+      Widget? prefix,
+      Widget? prefixIcon,
+      Color? prefixIconColor,
+      String? prefixText,
+      TextStyle? prefixStyle,
+      Widget? suffix,
+      Widget? suffixIcon,
+      Color? suffixIconColor,
+      String? suffixText,
+      TextStyle? suffixStyle,
+      bool isDense = false,
+      EdgeInsetsGeometry? contentPadding,
+      InputBorder? border,
+      InputBorder? focusedBorder,
+      InputBorder? enabledBorder,
+      InputBorder? errorBorder,
+      TextStyle? errorStyle,
+      FloatingLabelBehavior? floatingLabelBehavior,
+      String? counterText = ""}) {
+    return InputDecoration(
+      hintText: hintText,
+      labelText: labelText,
+      errorStyle: errorStyle,
+      label: label,
+      alignLabelWithHint: true,
+      border: border ?? Styles.inputBorder4(),
+      focusedBorder: focusedBorder ?? Styles.inputBorder4(),
+      enabledBorder: enabledBorder ?? Styles.inputBorder4(),
+      errorBorder: errorBorder ?? Styles.inputBorder4(color: ColorName.error),
+      hintStyle: hintStyle ?? Styles.smallText(color: ColorName.onSurface),
+      labelStyle: Styles.smallText(color: ColorName.onPrimary),
+      suffix: suffix,
+      suffixIconColor: suffixIconColor,
+      suffixText: suffixText,
+      suffixStyle: suffixStyle,
+      prefix: prefix,
+      prefixText: prefixText,
+      prefixStyle: prefixStyle,
+      prefixIcon: prefixIcon,
+      prefixIconColor: prefixIconColor,
+      floatingLabelBehavior:
+          floatingLabelBehavior ?? FloatingLabelBehavior.always,
+      suffixIcon: suffixIcon,
+      isDense: isDense,
+      contentPadding: contentPadding,
+      fillColor: Colors.white,
+      counterText: counterText,
+    );
+  }
+
+  static InputDecoration inputDecoration2({
+    String? labelText,
+    String? hintText = "",
+    Widget? label,
+    Widget? prefix,
+    Widget? prefixIcon,
+    Color? prefixIconColor,
+    String? prefixText,
+    TextStyle? prefixStyle,
+    Widget? suffix,
+    Widget? suffixIcon,
+    Color? suffixIconColor,
+    String? suffixText,
+    TextStyle? suffixStyle,
+  }) {
+    return InputDecoration(
+        hintText: hintText,
+        fillColor: ColorName.frameColor(),
+        labelText: labelText,
+        filled: true,
+        label: label,
+        alignLabelWithHint: true,
+        border: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        hintStyle: Styles.smallText(color: ColorName.onSurface),
+        labelStyle: Styles.smallText(color: ColorName.onPrimary),
+        suffix: suffix,
+        suffixIconColor: suffixIconColor,
+        suffixText: suffixText,
+        suffixStyle: suffixStyle,
+        prefix: prefix,
+        prefixText: prefixText,
+        prefixStyle: prefixStyle,
+        prefixIcon: prefixIcon,
+        prefixIconColor: prefixIconColor,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: suffixIcon);
+  }
+
+  ///Border Dialog.
+  static OutlinedBorder borderDialog({double radius = 8}) {
+    return RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
+  }
+
+  ///Box shadow.
+  //0px 4px 8px rgba(0, 0, 0, 0.15);
+  static List<BoxShadow> boxShadow1() {
+    return [
+      const BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.15),
+        blurRadius: 8,
+        offset: Offset(0, 4),
+      ),
+    ];
+  }
+
+  static List<BoxShadow> boxShadow2() {
+    return [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.2),
+        blurRadius: 4,
+        spreadRadius: 1,
+        offset: const Offset(0, 0),
+      ),
+    ];
+  }
+
+  static List<BoxShadow> boxShadow3() {
+    return [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.2),
+        blurRadius: 4,
+        spreadRadius: 1,
+        offset: const Offset(0, 2),
+      ),
+    ];
+  }
+
+  ///BoxDecoration.
+  static BoxDecoration boxDecoration1(
+      {double radius = 8, Color color = Colors.white}) {
+    return BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(radius),
+    );
+  }
+
+  static BoxDecoration boxDecoration2(
+      {double radius = 8, double border = 1, Color? color}) {
+    return BoxDecoration(
+      color: Colors.white,
+      border: Border.all(width: border, color: color ?? ColorName.neutral8()),
+      borderRadius: BorderRadius.circular(radius),
+    );
+  }
+
+  static BoxDecoration boxDecoration3(
+      {double? radius, double border = 1, Color? color}) {
+    return BoxDecoration(
+      color: Colors.transparent,
+      border: Border.all(width: border, color: color ?? ColorName.neutral8()),
+      borderRadius: BorderRadius.circular(radius ?? 8.w),
+    );
+  }
+
+  static InputBorder focusBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r), // Same as container
+      borderSide: const BorderSide(
+        color: ColorName.blue23,
+        width: 3.0,
+      ),
+    );
+  }
 }

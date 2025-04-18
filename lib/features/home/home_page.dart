@@ -97,6 +97,7 @@ class HomePage extends GetView<HomeController> {
                                 controller.listDisplayedProducts[index];
                             return GestureDetector(
                               onTap: () {
+                                Get.toNamed(Routes.productDetail);
                               },
                               child: ProductsItemView(
                                 name: products.name,
@@ -164,7 +165,7 @@ class HomePage extends GetView<HomeController> {
                   child: Text(
                     'Hello Vanish',
                     style: TextStyle(
-                      color: Colors.black.withOpacity(0.8700000047683716),
+                      color: Colors.black.withOpacity(0.8),
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),

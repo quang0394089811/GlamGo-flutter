@@ -80,8 +80,8 @@ class ProductsItemView extends StatelessWidget {
           SimpleRowContent(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             isShowWidget: true,
-            contentFirst: price ?? '150\$',
-            contentSecond: priceSale ?? '300\$',
+            contentFirst: price ?? '\$150',
+            contentSecond: priceSale ?? '\$300',
           )
         ],
       ),
