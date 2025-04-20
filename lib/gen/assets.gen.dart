@@ -16,6 +16,9 @@ class $AssetsIconsGen {
   AssetGenImage get icAddCart =>
       const AssetGenImage('assets/icons/ic_add_cart.png');
 
+  /// File path: assets/icons/ic_add_to_cart.svg
+  String get icAddToCart => 'assets/icons/ic_add_to_cart.svg';
+
   /// File path: assets/icons/ic_arrow_right.svg
   String get icArrowRight => 'assets/icons/ic_arrow_right.svg';
 
@@ -24,6 +27,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_background_location.svg
   String get icBackgroundLocation => 'assets/icons/ic_background_location.svg';
+
+  /// File path: assets/icons/ic_clear.svg
+  String get icClear => 'assets/icons/ic_clear.svg';
 
   /// File path: assets/icons/ic_close.svg
   String get icClose => 'assets/icons/ic_close.svg';
@@ -82,6 +88,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_setting.svg
   String get icSetting => 'assets/icons/ic_setting.svg';
 
+  /// File path: assets/icons/ic_shopping_bag.svg
+  String get icShoppingBag => 'assets/icons/ic_shopping_bag.svg';
+
   /// File path: assets/icons/ic_star.svg
   String get icStar => 'assets/icons/ic_star.svg';
 
@@ -100,21 +109,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
 
-    /// File path: assets/icons/ic_add_to_cart.svg
-  String get icAddToCart => 'assets/icons/ic_add_to_cart.svg';
-
-    /// File path: assets/icons/ic_shopping_bag.svg
-  String get icShoppingBag => 'assets/icons/ic_shopping_bag.svg';
-
-    /// File path: assets/icons/ic_clear.svg
-  String get icClear => 'assets/icons/ic_clear.svg';
-
   /// List of all assets
   List<dynamic> get values => [
     icAddCart,
+    icAddToCart,
     icArrowRight,
     icArrowRightNew,
     icBackgroundLocation,
+    icClear,
     icClose,
     icContactBook,
     icDelete,
@@ -134,14 +136,13 @@ class $AssetsIconsGen {
     icPower,
     icRemoteTable,
     icSetting,
+    icShoppingBag,
     icStar,
     icStore,
     icSuccessToast,
     icUser,
     icWarningToast,
     notify,
-    icAddToCart,
-    icShoppingBag,
   ];
 }
 

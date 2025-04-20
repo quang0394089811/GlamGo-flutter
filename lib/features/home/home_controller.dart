@@ -82,8 +82,8 @@ class HomeController extends BaseController {
           appException.value = error;
           isLoading.value = false;
         },
-        (data) {
-          _listCategories.assignAll(data.data ?? []);
+        (result) {
+          _listCategories.assignAll(result.data ?? []);
           isLoading.value = false;
         },
       );
@@ -102,8 +102,8 @@ class HomeController extends BaseController {
           appException.value = error;
           _isLoadingProduct.value = false;
         },
-        (data) {
-          _listAllProducts.assignAll(data.data ?? []);
+        (result) {
+          _listAllProducts.assignAll(result.data ?? []);
           _isLoadingProduct.value = false;
         },
       );
@@ -138,8 +138,8 @@ class HomeController extends BaseController {
           _productsByCategory.clear();
           _isLoadingProductByCa.value = false;
         },
-        (data) {
-          final products = data.data ?? [];
+        (result) {
+          final products = result.data ?? [];
           _productsByCategory.assignAll(products);
           if (categoryId != null) {
             _productsCacheByCategory[categoryId] = products;

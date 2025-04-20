@@ -37,26 +37,35 @@ class BaseResponseModel<T> {
 
   final int? total;
 
+  final String? message;
+
+  @JsonKey(name: 'status')
+  final int? errorCode;
+
   BaseResponseModel({
-    required this.currentPage,
-    required this.data,
-    required this.firstPageUrl,
-    required this.from,
-    required this.lastPage,
-    required this.lastPageUrl,
-    required this.links,
+    this.currentPage,
+    this.data,
+    this.firstPageUrl,
+    this.from,
+    this.lastPage,
+    this.lastPageUrl,
+    this.links,
     this.nextPageUrl,
-    required this.path,
-    required this.perPage,
+    this.path,
+    this.perPage,
     this.prevPageUrl,
-    required this.to,
-    required this.total,
+    this.to,
+    this.total,
+    this.message,
+    this.errorCode,
   });
 
-  factory BaseResponseModel.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+  factory BaseResponseModel.fromJson(
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$BaseResponseModelFromJson(json, fromJsonT);
 
-  Map<String, dynamic> toJson(Object Function(T) toJsonT) => _$BaseResponseModelToJson(this, toJsonT);
+  Map<String, dynamic> toJson(Object Function(T) toJsonT) =>
+      _$BaseResponseModelToJson(this, toJsonT);
 }
 
 @JsonSerializable()

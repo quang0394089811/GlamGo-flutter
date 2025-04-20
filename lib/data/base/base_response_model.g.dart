@@ -26,6 +26,8 @@ BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
       prevPageUrl: json['prev_page_url'] as String?,
       to: (json['to'] as num?)?.toInt(),
       total: (json['total'] as num?)?.toInt(),
+      message: json['message'] as String?,
+      errorCode: (json['status'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BaseResponseModelToJson<T>(
@@ -46,6 +48,8 @@ Map<String, dynamic> _$BaseResponseModelToJson<T>(
       'prev_page_url': instance.prevPageUrl,
       'to': instance.to,
       'total': instance.total,
+      'message': instance.message,
+      'status': instance.errorCode,
     };
 
 Link _$LinkFromJson(Map<String, dynamic> json) => Link(

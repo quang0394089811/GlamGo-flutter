@@ -4,15 +4,16 @@ import 'package:get/get.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 
 class BaseImageWidget extends StatelessWidget {
-  const BaseImageWidget(
-      {super.key,
-      this.heightImage,
-      this.widthImage,
-      required this.path,
-      this.cacheKey,
-      this.errorWidget,
-      this.boxFit,
-      });
+  const BaseImageWidget({
+    super.key,
+    this.heightImage,
+    this.widthImage,
+    required this.path,
+    this.cacheKey,
+    this.errorWidget,
+    this.boxFit,
+    this.radius,
+  });
 
   final double? heightImage;
   final double? widthImage;
@@ -20,16 +21,17 @@ class BaseImageWidget extends StatelessWidget {
   final String? cacheKey;
   final Widget? errorWidget;
   final BoxFit? boxFit;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: ColorName.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(radius ?? 12),
       ),
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(radius ?? 12),
           child: CachedNetworkImage(
             alignment: Alignment.topCenter,
             cacheKey: cacheKey,
