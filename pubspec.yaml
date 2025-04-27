@@ -61,6 +61,7 @@ dependencies:
   flutter_widget_from_html: ^0.16.0
   shared_preferences: ^2.5.2
   readmore: ^3.0.0
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_gen: ^5.8.0

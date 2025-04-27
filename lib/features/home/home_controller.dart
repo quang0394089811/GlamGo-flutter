@@ -41,6 +41,9 @@ class HomeController extends BaseController {
   final RxList<ProductsModel> _listAllProducts = <ProductsModel>[].obs;
   List<ProductsModel> get listAllProducts => _listAllProducts;
 
+  final _listProducts = ProductsModel().obs;
+  ProductsModel get listProducts => _listProducts.value;
+
   final RxList<ProductsModel> _productsByCategory = <ProductsModel>[].obs;
   List<ProductsModel> get productsByCategory => _productsByCategory;
 
@@ -122,7 +125,8 @@ class HomeController extends BaseController {
     //   return;
     // }
     if (categoryId != null &&
-        _productsCacheByCategory.containsKey(categoryId)) {
+        _productsCacheByCategory.containsKey(categoryId) &&
+        _productsCacheByCategory[categoryId]!.isNotEmpty) {
       final cachedProducts = _productsCacheByCategory[categoryId] ?? [];
       _productsByCategory.assignAll(cachedProducts);
       return;

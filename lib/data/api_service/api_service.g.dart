@@ -18,12 +18,12 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<BaseResponseModel<CategoryModel>> getCategories() async {
+  Future<BaseResponse<List<CategoryModel>>> getCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BaseResponseModel<CategoryModel>>(
+    final _options = _setStreamType<BaseResponse<List<CategoryModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -34,11 +34,17 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseModel<CategoryModel> _value;
+    late BaseResponse<List<CategoryModel>> _value;
     try {
-      _value = BaseResponseModel<CategoryModel>.fromJson(
+      _value = BaseResponse<List<CategoryModel>>.fromJson(
         _result.data!,
-        (json) => CategoryModel.fromJson(json as Map<String, dynamic>),
+        (json) => json is List<dynamic>
+            ? json
+                .map<CategoryModel>(
+                  (i) => CategoryModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -48,12 +54,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<BaseResponseModel<ProductsModel>> getProducts() async {
+  Future<BaseResponse<List<ProductsModel>>> getProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BaseResponseModel<ProductsModel>>(
+    final _options = _setStreamType<BaseResponse<List<ProductsModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -64,11 +70,17 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseModel<ProductsModel> _value;
+    late BaseResponse<List<ProductsModel>> _value;
     try {
-      _value = BaseResponseModel<ProductsModel>.fromJson(
+      _value = BaseResponse<List<ProductsModel>>.fromJson(
         _result.data!,
-        (json) => ProductsModel.fromJson(json as Map<String, dynamic>),
+        (json) => json is List<dynamic>
+            ? json
+                .map<ProductsModel>(
+                  (i) => ProductsModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -78,7 +90,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<BaseResponseModel<ProductsModel>> getProductsByCategory(
+  Future<BaseResponse<List<ProductsModel>>> getProductsByCategory(
     int? categoryId,
   ) async {
     final _extra = <String, dynamic>{};
@@ -86,7 +98,7 @@ class _ApiService implements ApiService {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BaseResponseModel<ProductsModel>>(
+    final _options = _setStreamType<BaseResponse<List<ProductsModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -97,9 +109,46 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponseModel<ProductsModel> _value;
+    late BaseResponse<List<ProductsModel>> _value;
     try {
-      _value = BaseResponseModel<ProductsModel>.fromJson(
+      _value = BaseResponse<List<ProductsModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<ProductsModel>(
+                  (i) => ProductsModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<BaseResponse<ProductsModel>> getProductDetail(int? productId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'id': productId};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BaseResponse<ProductsModel>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/products/get-products-details',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<ProductsModel> _value;
+    try {
+      _value = BaseResponse<ProductsModel>.fromJson(
         _result.data!,
         (json) => ProductsModel.fromJson(json as Map<String, dynamic>),
       );

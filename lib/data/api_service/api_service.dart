@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:project_shop/configs/app_configs.dart';
+import 'package:project_shop/data/base/base_response.dart';
 import 'package:project_shop/data/base/base_response_model.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
@@ -12,11 +13,17 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @GET(CategoryAction.getCategories)
-  Future<BaseResponseModel<CategoryModel>> getCategories();
+  Future<BaseResponse<List<CategoryModel>>> getCategories();
 
   @GET(ProductsAction.getProducts)
-  Future<BaseResponseModel<ProductsModel>> getProducts();
+  Future<BaseResponse<List<ProductsModel>>> getProducts();
 
-    @GET(ProductsAction.getProductsByCategory)
-  Future<BaseResponseModel<ProductsModel>> getProductsByCategory(@Query("category_id") int? categoryId,);
+  @GET(ProductsAction.getProductsByCategory)
+  Future<BaseResponse<List<ProductsModel>>> getProductsByCategory(
+    @Query("category_id") int? categoryId,
+  );
+
+  @GET(ProductsAction.getProductDetail)
+  Future<BaseResponse<ProductsModel>> getProductDetail(
+      @Query("id") int? productId);
 }

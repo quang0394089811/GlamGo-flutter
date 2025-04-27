@@ -97,7 +97,8 @@ class HomePage extends GetView<HomeController> {
                                 controller.listDisplayedProducts[index];
                             return GestureDetector(
                               onTap: () {
-                                Get.toNamed(Routes.productDetail);
+                                Get.toNamed(Routes.productDetail,
+                                    arguments: products.id);
                               },
                               child: ProductsItemView(
                                 name: products.name,
