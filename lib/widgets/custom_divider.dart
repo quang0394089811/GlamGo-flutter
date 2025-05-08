@@ -73,7 +73,7 @@ class CustomDivider extends StatelessWidget {
           height: zigzagHeight,
           width: zigzagWidth,
         );
-      }
+    }
   }
 }
 

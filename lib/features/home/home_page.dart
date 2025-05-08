@@ -44,7 +44,7 @@ class HomePage extends GetView<HomeController> {
                         margin: EdgeInsets.symmetric(vertical: 10),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: controller.listCategories.length,
+                          itemCount: controller.listCategories.length + 1,
                           itemBuilder: (context, index) {
                             return Obx(
                               () {
@@ -104,8 +104,10 @@ class HomePage extends GetView<HomeController> {
                                 name: products.name,
                                 path: Utils.I
                                     .getImageFullPath(products.image ?? ''),
-                                price: products.price.toString(),
-                                priceSale: products.priceSale.toString(),
+                                price: Utils.I
+                                    .formatCurrency(products.price ?? 0.0),
+                                priceSale: Utils.I
+                                    .formatCurrency(products.priceSale ?? 0.0),
                                 onTap: () {},
                                 isWishList: true,
                               ),

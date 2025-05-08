@@ -40,8 +40,9 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                                     onPageChanged: (index) {
                                       controller.scrollThumbnailToIndex(index);
                                     },
-                                    itemCount: controller
-                                        .productDetail?.productImages?.length,
+                                    itemCount: controller.productDetail
+                                            ?.productImages?.length ??
+                                        1,
                                     itemBuilder: (context, index) {
                                       return BaseImageWidget(
                                         boxFit: BoxFit.cover,
@@ -82,7 +83,7 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: controller
                                         .productDetail?.productImages?.length ??
-                                    0,
+                                    1,
                                 controller:
                                     controller.thumbnailScrollController,
                                 separatorBuilder: (_, __) =>
@@ -110,21 +111,18 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                            child: Image.network(
-                                              Utils.I.getImageFullPath(
-                                                controller
-                                                        .productDetail
-                                                        ?.productImages?[index]
-                                                        .image ??
-                                                    '',
-                                              ),
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.cover,
+                                          child: BaseImageWidget(
+                                            boxFit: BoxFit.cover,
+                                            path: Utils.I.getImageFullPath(
+                                              controller
+                                                      .productDetail
+                                                      ?.productImages?[index]
+                                                      .image ??
+                                                  '',
                                             ),
+                                            heightImage: 70,
+                                            widthImage: 70,
+                                            radius: 6,
                                           ),
                                         ),
                                       );

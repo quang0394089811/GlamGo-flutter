@@ -79,6 +79,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_notification.svg
   String get icNotification => 'assets/icons/ic_notification.svg';
 
+  /// File path: assets/icons/ic_paper.svg
+  String get icPaper => 'assets/icons/ic_paper.svg';
+
   /// File path: assets/icons/ic_power.svg
   String get icPower => 'assets/icons/ic_power.svg';
 
@@ -133,6 +136,7 @@ class $AssetsIconsGen {
     icLocation,
     icLogout,
     icNotification,
+    icPaper,
     icPower,
     icRemoteTable,
     icSetting,

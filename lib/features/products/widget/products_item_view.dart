@@ -25,7 +25,8 @@ class ProductsItemView extends StatelessWidget {
     this.price,
     this.priceSale,
     this.starCount,
-    this.isWishList = true, this.iconColor,
+    this.isWishList = true,
+    this.iconColor,
   });
 
   final String? name;
@@ -67,7 +68,6 @@ class ProductsItemView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 4),
             textAlign: TextAlign.start,
             isShowWidget: true,
-            imageFirst: null,
             contentFirst: name ?? 'Áo Hoodie uuuu',
             styleContent: Styles.normalTextW700(),
             isSpacer: false,
@@ -80,8 +80,15 @@ class ProductsItemView extends StatelessWidget {
           SimpleRowContent(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             isShowWidget: true,
-            contentFirst: price ?? '\$150',
-            contentSecond: priceSale ?? '\$300',
+            contentFirst: priceSale ?? '\$150',
+            contentSecond: price ?? '\$300',
+            firstStyle: Styles.normalTextW500(size: 14),
+            secondStyle: Styles.normalTextW500(
+              color: ColorName.grey1,
+            ).copyWith(
+                decoration: TextDecoration.lineThrough,
+                decorationColor: ColorName.orange17),
+            firstTextOverflow: TextOverflow.ellipsis,
           )
         ],
       ),

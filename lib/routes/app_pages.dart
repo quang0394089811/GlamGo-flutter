@@ -1,5 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:project_shop/features/article/article_binding.dart';
+import 'package:project_shop/features/article/article_page.dart';
 import 'package:project_shop/features/cart/cart_binding.dart';
 import 'package:project_shop/features/cart/cart_page.dart';
 import 'package:project_shop/features/category/category_binding.dart';
@@ -81,5 +83,15 @@ class AppPages {
       // transition: Transition.cupertino,
       // transitionDuration: Duration(seconds: 1),
     ),
+    GetPage(
+      name: Routes.article,
+      binding: ArticleBinding(),
+      page: () => ArticlePage(),
+    ),
+    GetPage(
+      name: Routes.articleDetail,
+      page: () => ArticlePage(),
+    ),
+
   ];
 }

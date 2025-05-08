@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:project_shop/data/repository/categories_action/categories_repository.dart';
 import 'package:project_shop/features/account/account_controller.dart';
+import 'package:project_shop/features/article/article_controller.dart';
 import 'package:project_shop/features/category/category_controller.dart';
 import 'package:project_shop/features/home/home_controller.dart';
 import 'package:project_shop/features/navigation/main_screen_controller.dart';
@@ -15,5 +16,6 @@ class MainScreenBinding extends Bindings {
     Get.lazyPut(() => CategoryController());
     Get.lazyPut(() => WishListController());
     Get.lazyPut(() => AccountController());
+    Get.lazyPut(() => ArticleController());
   }
 }

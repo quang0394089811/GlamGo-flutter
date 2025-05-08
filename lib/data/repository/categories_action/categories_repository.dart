@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:project_shop/base/app_exception.dart';
 import 'package:project_shop/data/api_service/api_service.dart';
 import 'package:project_shop/data/base/base_response.dart';
+import 'package:project_shop/data/response_models/article/article_model.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
 
@@ -15,8 +16,14 @@ abstract class ICategoriesRepository {
   Future<Either<AppException, BaseResponse<List<ProductsModel>>>>
       getProductsByCategory(int? categoryId);
 
-  Future<Either<AppException, BaseResponse<ProductsModel>>>
-      getProductDetail(int? productId);
+  Future<Either<AppException, BaseResponse<ProductsModel>>> getProductDetail(
+      int? productId);
+
+  Future<Either<AppException, BaseResponse<List<ArticleModel>>>> getArticle(
+      int? isHote, int? categoryArticleId);
+
+  Future<Either<AppException, BaseResponse<List<CategoryModel>>>>
+      getCategoriesArticle();
 }
 
 class CategoriesRepository implements ICategoriesRepository {
@@ -28,7 +35,7 @@ class CategoriesRepository implements ICategoriesRepository {
     try {
       final response = await _apiService.getCategories();
       if (response.errorCode != 200) {
-        return Left(AppException(message: 'Data is empty'));
+        return Left(AppException(message: response.message.toString()));
       }
       return Right(response);
     } catch (e) {
@@ -42,7 +49,7 @@ class CategoriesRepository implements ICategoriesRepository {
     try {
       final response = await _apiService.getProducts();
       if (response.errorCode != 200) {
-        return Left(AppException(message: 'Data is empty'));
+        return Left(AppException(message: response.message.toString()));
       }
       return Right(response);
     } catch (e) {
@@ -56,7 +63,7 @@ class CategoriesRepository implements ICategoriesRepository {
     try {
       final response = await _apiService.getProductsByCategory(categoryId);
       if (response.errorCode != 200) {
-        return Left(AppException(message: 'Data is empty'));
+        return Left(AppException(message: response.message.toString()));
       }
       return Right(response);
     } catch (e) {
@@ -65,10 +72,38 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   @override
-  Future<Either<AppException, BaseResponse<ProductsModel>>>
-      getProductDetail(int? productId) async {
+  Future<Either<AppException, BaseResponse<ProductsModel>>> getProductDetail(
+      int? productId) async {
     try {
       final response = await _apiService.getProductDetail(productId);
+      if (response.errorCode != 200) {
+        return Left(AppException(message: response.message.toString()));
+      }
+      return Right(response);
+    } catch (e) {
+      return Left(AppException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppException, BaseResponse<List<ArticleModel>>>> getArticle(
+      int? isHot, int? categoryArticleId) async {
+    try {
+      final response = await _apiService.getArticle(isHot, categoryArticleId);
+      if (response.errorCode != 200) {
+        return Left(AppException(message: response.message.toString()));
+      }
+      return Right(response);
+    } catch (e) {
+      return Left(AppException(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppException, BaseResponse<List<CategoryModel>>>>
+      getCategoriesArticle() async {
+    try {
+      final response = await _apiService.getCategoriesArticle();
       if (response.errorCode != 200) {
         return Left(AppException(message: response.message.toString()));
       }

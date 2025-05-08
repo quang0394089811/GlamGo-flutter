@@ -13,8 +13,8 @@ class CategoryModel {
   int? parentId;
   @JsonKey(name: "parent_name")
   String? parentName;
-  @JsonKey(name: "status_id")
-  int? statusId;
+  @JsonKey(name: "status")
+  int? status;
 
   CategoryModel({
     this.id,
@@ -24,7 +24,7 @@ class CategoryModel {
     this.images,
     this.parentId,
     this.parentName,
-    this.statusId,
+    this.status,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>

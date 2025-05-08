@@ -14,8 +14,7 @@ class CategoryPage extends GetView<CategoryController> {
       child: Scaffold(
         body: Obx(
           () {
-            if (controller.isLoading.value ||
-              controller.isLoadingProduct) {
+            if (controller.isLoading.value || controller.isLoadingProduct) {
               return Center(child: CircularProgressIndicator());
             }
 
@@ -30,7 +29,7 @@ class CategoryPage extends GetView<CategoryController> {
                     margin: EdgeInsets.symmetric(vertical: 10),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: controller.listCategories.length,
+                      itemCount: controller.listCategories.length + 1,
                       itemBuilder: (context, index) {
                         return Obx(
                           () {

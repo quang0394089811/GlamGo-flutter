@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:project_shop/configs/app_configs.dart';
 import 'package:project_shop/data/base/base_response.dart';
-import 'package:project_shop/data/base/base_response_model.dart';
+import 'package:project_shop/data/response_models/article/article_model.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -26,4 +26,13 @@ abstract class ApiService {
   @GET(ProductsAction.getProductDetail)
   Future<BaseResponse<ProductsModel>> getProductDetail(
       @Query("id") int? productId);
+  
+  @GET(ArticleAction.getArticle)
+  Future<BaseResponse<List<ArticleModel>>> getArticle(
+    @Query("is_hot") int? isHot,
+    @Query("category_artical_id") int? categoryArticleId,
+  );
+
+  @GET(ArticleAction.getCategoriesArticle)
+  Future<BaseResponse<List<CategoryModel>>> getCategoriesArticle();
 }

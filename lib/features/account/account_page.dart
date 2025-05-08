@@ -4,10 +4,7 @@ import 'package:get/get.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/routes/app_routes.dart';
-import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/common/common_switch.dart';
-import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
-import 'package:project_shop/widgets/custom_divider.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 import 'package:project_shop/widgets/shimmer/shimmer_products.dart';
@@ -21,7 +18,7 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(),
+        // appBar: CustomAppBar(),
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
@@ -36,17 +33,17 @@ class AccountPage extends StatelessWidget {
               SizedBox(
                 height: 16.w,
               ),
-              IButton.primaryNormal(
-                contentPadding: EdgeInsets.symmetric(horizontal: 28.w),
-                title: 'Đăng xuất'.tr,
-                onPress: () {
-                  // mainController?.logout();
-                },
-                iconFirst: Assets.icons.icLogout,
-              ),
-              SizedBox(
-                height: 32.w,
-              )
+              // IButton.primaryNormal(
+              //   contentPadding: EdgeInsets.symmetric(horizontal: 28.w),
+              //   title: 'Đăng xuất'.tr,
+              //   onPress: () {
+                  //// mainController?.logout();
+              //   },
+              //   iconFirst: Assets.icons.icLogout,
+              // ),
+              // SizedBox(
+              //   height: 32.w,
+              // )
             ],
           ),
         ),
@@ -180,7 +177,8 @@ class AccountPage extends StatelessWidget {
           SimpleRowWidget(
             contentFirst: 'Account Details'.tr,
             onTap: () {
-              Navigator.push(Get.context!,  MaterialPageRoute(builder: (context) => ShimmerProducts()));
+              Navigator.push(Get.context!,
+                  MaterialPageRoute(builder: (context) => ShimmerProducts()));
             },
             imageFirst: Assets.icons.icUser,
           ),
