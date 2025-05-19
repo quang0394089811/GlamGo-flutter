@@ -1,9 +1,13 @@
 class AppConfigs {
   // static String hostUrl = 'http://192.168.0.105:8000';
-  static String hostUrl = 'http://192.168.110.2:8000';
+  static String hostUrl = 'http://192.168.110.14:8000';
   // static String hostUrl = 'http://10.10.252.81:8000';
   static String apiUrl = '/api/v1';
   static String baseUrl = '$hostUrl$apiUrl';
+}
+
+class ImageAction {
+  static const getBanner = '/get-banner';
 }
 
 class CategoryAction {

@@ -47,6 +47,7 @@ class ItemSimilarProducts extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
+          const SizedBox(height: 8),
           Text(
             priceProducts ?? 'Giá tiền sản phẩm',
             style: Styles.normalTextW500(),

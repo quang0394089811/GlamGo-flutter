@@ -12,6 +12,7 @@ class ItemArticle extends StatelessWidget {
     this.titleStyle,
     this.descriptionStyle,
     this.onTap,
+    this.radius = 0,
   });
 
   final String? titleNews;
@@ -20,6 +21,7 @@ class ItemArticle extends StatelessWidget {
   final double? heightImg, widthImg;
   final TextStyle? titleStyle, descriptionStyle;
   final VoidCallback? onTap;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class ItemArticle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BaseImageWidget(
+                  radius: radius,
                   path: path ?? 'assets/images/avatar.png',
                   heightImage: heightImg,
                   widthImage: widthImg,

@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:project_shop/features/article/article_binding.dart';
+import 'package:project_shop/features/article/article_detail/article_detail_page.dart';
 import 'package:project_shop/features/article/article_page.dart';
 import 'package:project_shop/features/cart/cart_binding.dart';
 import 'package:project_shop/features/cart/cart_page.dart';
@@ -90,7 +91,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.articleDetail,
-      page: () => ArticlePage(),
+      page: () => ArticleDetailPage(),
     ),
 
   ];

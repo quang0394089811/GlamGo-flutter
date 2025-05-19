@@ -56,13 +56,13 @@ class ProductsImageWidget extends StatelessWidget {
                 fit: boxFit ?? BoxFit.cover,
                 placeholder: (context, url) {
                   return Image.asset(
-                    'assets/images/avatar.png',
+                    'assets/images/img_placeholder.png',
                   );
                 },
                 errorWidget: (context, obj, trace) {
                   return errorWidget ??
                       Image.asset(
-                        'assets/images/avatar.png',
+                        'assets/images/img_placeholder.png',
                       );
                 },
               )),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/routes/app_routes.dart';
+import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
 import 'package:project_shop/widgets/common/common_switch.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
@@ -18,11 +19,15 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: CustomAppBar(),
+        appBar: CustomAppBar(
+          label: 'Thiết lập',
+          showBackButton: false,
+        ),
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
+              SizedBox(height: 16.w),
               _userInfo(),
               SizedBox(
                 height: 16.w,
@@ -30,14 +35,12 @@ class AccountPage extends StatelessWidget {
               _cardAccount(),
               SizedBox(height: 16.w),
               _cardSupport(),
-              SizedBox(
-                height: 16.w,
-              ),
+              SizedBox(height: 16.w),
               // IButton.primaryNormal(
               //   contentPadding: EdgeInsets.symmetric(horizontal: 28.w),
               //   title: 'Đăng xuất'.tr,
               //   onPress: () {
-                  //// mainController?.logout();
+              //// mainController?.logout();
               //   },
               //   iconFirst: Assets.icons.icLogout,
               // ),

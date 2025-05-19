@@ -187,7 +187,7 @@ class HomePage extends GetView<HomeController> {
                           ),
                         ),
                         TextSpan(
-                          text: 'to Sense',
+                          text: 'to Sensei',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,

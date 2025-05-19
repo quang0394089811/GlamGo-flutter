@@ -174,7 +174,7 @@ class _IButtonState extends State<IButton> {
   Widget build(BuildContext context) {
     // final double height = widget.height ?? (widget.isNormal ? 38 : 48);
     // final textColor =
-    //     widget.outline == true ? Styles.textLinkColor : Styles.white;
+    //     widget.outline == true ? ColorName.textLinkColor : ColorName.white;
     return Material(
       borderRadius: BorderRadius.circular(widget.radius ?? 24),
       color: widget.color,

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_shop/bindings/initial_app.dart';
 import 'package:project_shop/bindings/initial_binding.dart';
 import 'package:project_shop/data/secure_storage/share_preference_manager.dart';
 import 'package:project_shop/routes/app_pages.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   Get.put(SharedPreferencesManager(sharedPreferences: prefs));
+  await AppInitializer.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(const MyApp()),
   );
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
           ),
           locale: Get.deviceLocale,
           fallbackLocale: Locale('en', 'US'),
-          initialBinding: InitialBinding(),
+          // initialBinding: InitialBinding(),
           getPages: AppPages.routes,
           initialRoute: AppPages.initial,
         );

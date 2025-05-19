@@ -287,7 +287,8 @@ class Styles {
           fontWeight: fWeight,
           fontStyle: FontStyle.italic,
           fontFamily: FontFamily.inter);
-            ///Border TextField.
+
+  ///Border TextField.
   static OutlineInputBorder inputBorder4(
       {Color color = ColorName.white4,
       double width = 1,
