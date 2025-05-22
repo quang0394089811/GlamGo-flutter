@@ -18,7 +18,7 @@ class ProductsImageWidget extends StatelessWidget {
     this.boxFit,
     this.bgrColor,
     this.colorIcon,
-    this.isWishList = true,
+    this.isWishList = false,
   });
 
   final double? heightImage;
@@ -90,10 +90,12 @@ class ProductsImageWidget extends StatelessWidget {
                 ],
               ),
               child: isWishList
-                  ? Image.asset(Assets.images.icHeart.path)
-                  : Image.asset(
+                  ? Image.asset(
                       Assets.images.icHeartFill.path,
                       color: colorIcon ?? ColorName.red5,
+                    )
+                  : Image.asset(
+                      Assets.images.icHeart.path,
                     ),
             ),
           ),

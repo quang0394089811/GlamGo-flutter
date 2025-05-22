@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:project_shop/base/app_exception.dart';
 import 'package:project_shop/base/base_controller.dart';
@@ -5,8 +7,12 @@ import 'package:project_shop/data/api_service/api_service.dart';
 import 'package:project_shop/data/repository/categories_action/categories_repository.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
+import 'package:project_shop/features/wishlist/wish_list_controller.dart';
 
 class CategoryController extends BaseController {
+
+  final WishListController wishListController = Get.find();
+
   final _categoriesRepository = Get.find<CategoriesRepository>();
 
   final RxList<CategoryModel> _listCategories = <CategoryModel>[].obs;
@@ -39,7 +45,9 @@ class CategoryController extends BaseController {
       _selectedIndex.value == 0 ? _listAllProducts : _productsByCategory;
 
   final Map<int, List<ProductsModel>> _productsCacheByCategory = {};
+
   final Map<int, Map<int, List<ProductsModel>>> _productsByCategoryAndPage = {};
+
 
   @override
   void onInit() {
@@ -141,4 +149,6 @@ class CategoryController extends BaseController {
       _isLoadingProductByCa.value = false;
     }
   }
+
+
 }

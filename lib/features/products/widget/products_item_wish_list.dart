@@ -13,18 +13,22 @@ import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 class ProductsItemWishlist extends StatelessWidget {
   const ProductsItemWishlist({
     super.key,
-    this.isWishList = true,
+    this.isItemWishList = true,
     this.path,
     this.starCount,
     this.nameProduct,
     this.describe,
     this.onTap,
+    this.onWishListProduct,
+    this.isWishList = false,
   });
 
-  final bool isWishList;
+  final bool isItemWishList;
   final String? path;
   final String? starCount, nameProduct, describe;
   final VoidCallback? onTap;
+  final VoidCallback? onWishListProduct;
+  final bool isWishList;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,8 @@ class ProductsItemWishlist extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ProductsImageWidget(
+            isWishList: isWishList,
+            onTap: onWishListProduct,
             iconSize: 34,
             heightImage: 120,
             widthImage: Get.width * 0.46,
@@ -51,7 +57,7 @@ class ProductsItemWishlist extends StatelessWidget {
           SizedBox(width: 8),
           Flexible(
             flex: 1,
-            child: isWishList
+            child: isItemWishList
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

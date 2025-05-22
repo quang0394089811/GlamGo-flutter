@@ -108,8 +108,10 @@ class HomePage extends GetView<HomeController> {
                                     .formatCurrency(products.price ?? 0.0),
                                 priceSale: Utils.I
                                     .formatCurrency(products.priceSale ?? 0.0),
-                                onTap: () {},
-                                isWishList: true,
+                                onTap: () => controller.wishListController
+                                    .toggleFavorite(products),
+                                isWishList: controller.wishListController
+                                    .isFavorite(products),
                               ),
                             );
                           },

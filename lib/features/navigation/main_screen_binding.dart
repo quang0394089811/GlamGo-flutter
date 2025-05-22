@@ -12,7 +12,8 @@ class MainScreenBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => MainScreenController());
     Get.lazyPut(() => CategoriesRepository());
-    Get.put(HomeController());
+    Get.lazyPut(() => HomeController());
+    // Get.put(HomeController());
     Get.lazyPut(() => CategoryController());
     Get.lazyPut(() => WishListController());
     Get.lazyPut(() => AccountController());

@@ -1,5 +1,3 @@
-import 'package:project_shop/utils/extension/extension.dart';
-
 class Constant {
   static const String HH_mm = "HH:mm";
 
@@ -40,4 +38,6 @@ class Constant {
   static const SHOW_SNACK_BAR_DURATION = 3;
 
   static const KEY_FIRST_SHOW_ONBOARDING ='key_first_show_onboarding';
+
+  static const KEY_WISH_LIST_PRODUCTS = 'key_wish_list_products';
 }

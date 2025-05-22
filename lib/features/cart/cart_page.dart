@@ -25,7 +25,7 @@ class CartPage extends StatelessWidget {
                 itemCount: 8,
                 itemBuilder: (context, _) {
                   return ProductsItemWishlist(
-                    isWishList: false,
+                    isItemWishList: false,
                   );
                 },
               ),

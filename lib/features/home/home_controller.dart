@@ -4,12 +4,15 @@ import 'package:project_shop/base/base_controller.dart';
 import 'package:project_shop/data/repository/categories_action/categories_repository.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
+import 'package:project_shop/features/wishlist/wish_list_controller.dart';
 
 class HomeController extends BaseController {
   final _currentIndex = 0.obs;
   get currentIndex => _currentIndex.value;
 
   final _categoriesRepository = Get.find<CategoriesRepository>();
+
+  final WishListController wishListController = Get.find();
 
   final List<String> listImgCarousel = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',

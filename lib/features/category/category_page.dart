@@ -66,31 +66,77 @@ class CategoryPage extends GetView<CategoryController> {
                       if (controller.listDisplayedProducts.isEmpty) {
                         return Center(child: Text('Không có sản phẩm nào'));
                       }
-                      return Expanded(
-                        child: GridView.builder(
-                          itemCount: controller.listDisplayedProducts.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 1,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
-                            mainAxisExtent: 250,
-                          ),
-                          itemBuilder: (context, index) {
-                            final products =
-                                controller.listDisplayedProducts[index];
-                            return ProductsItemView(
-                              name: products.name,
-                              path: Utils.I
-                                  .getImageFullPath(products.image ?? ''),
-                              price: products.price.toString(),
-                              priceSale: products.priceSale.toString(),
-                              onTap: () {},
-                              isWishList: true,
-                            );
-                          },
-                        ),
+                      return
+                          // Expanded(
+                          //   child: GridView.builder(
+                          //     itemCount: controller.listDisplayedProducts.length,
+                          //     gridDelegate:
+                          //         SliverGridDelegateWithFixedCrossAxisCount(
+                          //       crossAxisCount: 2,
+                          //       childAspectRatio: 1,
+                          //       crossAxisSpacing: 8,
+                          //       mainAxisSpacing: 8,
+                          //       mainAxisExtent: 250,
+                          //     ),
+                          //     itemBuilder: (context, index) {
+                          //       final products =
+                          //           controller.listDisplayedProducts[index];
+                          //       return ProductsItemView(
+                          //         name: products.name,
+                          //         path: Utils.I
+                          //             .getImageFullPath(products.image ?? ''),
+                          //         price: products.price.toString(),
+                          //         priceSale: products.priceSale.toString(),
+                          //         onTap: () {
+                          //           controller.isFavorite(products.id ?? 0)
+                          //               ? controller.addToFavorites(products)
+                          //               : controller.removeFromFavorites(products);
+                          //         },
+                          //         isWishList:
+                          //             controller.isFavorite(products.id ?? 0),
+                          //       );
+                          //     },
+                          //   ),
+                          // );
+                          Expanded(
+                        child: Obx(() => GridView.builder(
+                              itemCount:
+                                  controller.listDisplayedProducts.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                                mainAxisExtent: 250,
+                              ),
+                              itemBuilder: (context, index) {
+                                final products =
+                                    controller.listDisplayedProducts[index];
+                                return Obx(() {
+                                  return ProductsItemView(
+                                    name: products.name,
+                                    path: Utils.I
+                                        .getImageFullPath(products.image ?? ''),
+                                    price: products.price.toString(),
+                                    priceSale: products.priceSale.toString(),
+                                    onTap: () =>
+                                        controller.wishListController.toggleFavorite(products),
+                                    isWishList: controller.wishListController.isFavorite(products),
+                                  );
+                                });
+
+                                // ProductsItemView(
+                                //   name: products.name,
+                                //   path: Utils.I
+                                //       .getImageFullPath(products.image ?? ''),
+                                //   price: products.price.toString(),
+                                //   priceSale: products.priceSale.toString(),
+                                //   onTap: () {},
+                                //   isWishList: true,
+                                // );
+                              },
+                            )),
                       );
                     },
                   ),
