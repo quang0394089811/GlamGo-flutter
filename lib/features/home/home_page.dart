@@ -100,19 +100,21 @@ class HomePage extends GetView<HomeController> {
                                 Get.toNamed(Routes.productDetail,
                                     arguments: products.id);
                               },
-                              child: ProductsItemView(
-                                name: products.name,
-                                path: Utils.I
-                                    .getImageFullPath(products.image ?? ''),
-                                price: Utils.I
-                                    .formatCurrency(products.price ?? 0.0),
-                                priceSale: Utils.I
-                                    .formatCurrency(products.priceSale ?? 0.0),
-                                onTap: () => controller.wishListController
-                                    .toggleFavorite(products),
-                                isWishList: controller.wishListController
-                                    .isFavorite(products),
-                              ),
+                              child: Obx(() {
+                                return ProductsItemView(
+                                  name: products.name,
+                                  path: Utils.I
+                                      .getImageFullPath(products.image ?? ''),
+                                  price: Utils.I
+                                      .formatCurrency(products.price ?? 0.0),
+                                  priceSale: Utils.I.formatCurrency(
+                                      products.priceSale ?? 0.0),
+                                  onTap: () => controller.wishListController
+                                      .toggleFavorite(products),
+                                  isWishList: controller.wishListController
+                                      .isFavorite(products),
+                                );
+                              }),
                             );
                           },
                         );
