@@ -174,6 +174,10 @@ class $AssetsImagesGen {
   AssetGenImage get icLocation =>
       const AssetGenImage('assets/images/ic_location.png');
 
+  /// File path: assets/images/img_placeholder.png
+  AssetGenImage get imgPlaceholder =>
+      const AssetGenImage('assets/images/img_placeholder.png');
+
   /// File path: assets/images/init_carousel.jpg
   AssetGenImage get initCarousel =>
       const AssetGenImage('assets/images/init_carousel.jpg');
@@ -217,6 +221,7 @@ class $AssetsImagesGen {
     icHeart,
     icHeartFill,
     icLocation,
+    imgPlaceholder,
     initCarousel,
     introImage,
     jinStoreLogo,

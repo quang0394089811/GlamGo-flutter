@@ -213,7 +213,7 @@ class HomePage extends GetView<HomeController> {
             ),
             child: DefaultInkWell(
               onTap: () {},
-              child: IconWidget.ic24(path: Assets.icons.icSetting),
+              child: IconWidget.ic24(path: Assets.icons.icNotification),
             ),
           ),
           SizedBox(width: 8),
@@ -224,7 +224,9 @@ class HomePage extends GetView<HomeController> {
               borderRadius: BorderRadius.circular(40.r),
             ),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.cart);
+              },
               child: IconWidget.ic24(
                 path: Assets.icons.icShoppingBag,
                 color: ColorName.black,

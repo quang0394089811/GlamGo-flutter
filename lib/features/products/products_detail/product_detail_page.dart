@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_shop/base/util/utils.dart';
 import 'package:project_shop/features/products/products_detail/product_detail_controller.dart';
+import 'package:project_shop/features/products/products_detail/widget/item_detail.dart';
 import 'package:project_shop/features/products/products_detail/widget/item_similar_products.dart';
 import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
@@ -26,9 +27,9 @@ class ProductDetailPage extends GetView<ProductDetailController> {
               label: 'Chi tiết sản phẩm',
               action: Row(
                 children: [
-                  IconWidget.ic24(path: Assets.icons.icArrowRightNew),
-                  SizedBox(width: 8),
-                  IconWidget.ic24(path: Assets.icons.icArrowRightNew)
+                  IconWidget.ic24(path: Assets.icons.icShoppingBag),
+                  // SizedBox(width: 8),
+                  // IconWidget.ic24(path: Assets.icons.icArrowRightNew)
                 ],
               ),
             ),
@@ -155,8 +156,12 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                                 top: 8,
                                 right: 8,
                                 child: GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
+                                    onTap: () {
+                                      controller.wishListController
+                                          .toggleFavorite(
+                                              controller.productDetail!);
+                                    },
+                                    child: Container(
                                       padding: EdgeInsets.all(6),
                                       width: 40,
                                       height: 40,
@@ -172,9 +177,15 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                                           ),
                                         ],
                                       ),
-                                      child: Image.asset(
-                                          Assets.images.icHeart.path)),
-                                ),
+                                      child: controller.wishListController
+                                              .isFavorite(
+                                                  controller.productDetail)
+                                          ? Image.asset(
+                                              Assets.images.icHeartFill.path,
+                                              color: ColorName.red5)
+                                          : Image.asset(
+                                              Assets.images.icHeart.path),
+                                    )),
                               )
                             ],
                           ),
@@ -182,25 +193,25 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                           SimpleRowContent(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             contentFirst:
-                                controller.productDetail?.name ?? 'Rick Owns',
+                                controller.productDetail?.name ?? 'N/A',
                             firstStyle: Styles.normalTextW800(size: 18),
                             isShowWidget: false,
                           ),
                           SizedBox(height: 8),
                           SimpleRowContent(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            contentFirst: '\$699',
+                            contentFirst: Utils.I.formatCurrency(
+                                controller.productDetail?.price ?? 0.0),
                             firstStyle: Styles.normalTextW700(size: 16),
                             widthSizeBox: 30,
-                            contentSecond: '\$799',
+                            contentSecond: Utils.I.formatCurrency(
+                                controller.productDetail?.priceSale ?? 0.0),
                             secondStyle:
                                 Styles.normalTextW600(color: ColorName.grey1)
                                     .copyWith(
                                         decoration: TextDecoration.lineThrough,
                                         decorationColor: ColorName.orange13),
                           ),
-                          SizedBox(height: 8),
-                          const Text('Select Size'),
                           SizedBox(height: 8),
                           Text(
                             'Description',
@@ -248,6 +259,31 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                               },
                             ),
                           ),
+                          // SizedBox(
+                          //   height: 200,
+                          //   child: ListView.builder(
+                          //       shrinkWrap: true,
+                          //       physics: NeverScrollableScrollPhysics(),
+                          //       itemCount: controller.listAttribute.length,
+                          //       itemBuilder: (context, index) {
+                          //         final attributes =
+                          //             controller.listAttribute[index];
+                          //         return Obx(() {
+                          //           return ItemDetail(
+                          //             attribute: attributes,
+                          //             selected: controller
+                          //                 .getSelectedValue(attributes.id!),
+                          //             onSelected: (value) {
+                          //               controller.selectAttribute(
+                          //                 attributeId: attributes.id!,
+                          //                 value: value,
+                          //               );
+                          //               controller.printSelected();
+                          //             },
+                          //           );
+                          //         });
+                          //       }),
+                          // )
                         ],
                       );
                     }),

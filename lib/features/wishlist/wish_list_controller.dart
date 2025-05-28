@@ -51,8 +51,8 @@ class WishListController extends BaseController {
     }
   }
 
-  bool isFavorite(ProductsModel product) {
-    return _favoriteProducts.any((e) => e.id == product.id);
+  bool isFavorite(ProductsModel? product) {
+    return _favoriteProducts.any((e) => e.id == product?.id);
   }
 
   @override

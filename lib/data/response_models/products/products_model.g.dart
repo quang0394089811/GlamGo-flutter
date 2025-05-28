@@ -37,6 +37,10 @@ ProductsModel _$ProductsModelFromJson(Map<String, dynamic> json) =>
       productImages: (json['product_images'] as List<dynamic>?)
           ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
           .toList(),
+      attribute: (json['attribute'] as List<dynamic>?)
+          ?.map(
+              (e) => ProductAttributeModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ProductsModelToJson(ProductsModel instance) =>
@@ -62,6 +66,7 @@ Map<String, dynamic> _$ProductsModelToJson(ProductsModel instance) =>
       'updated_at': instance.updatedAt?.toIso8601String(),
       'category': instance.category,
       'product_images': instance.productImages,
+      'attribute': instance.attribute,
     };
 
 ProductImage _$ProductImageFromJson(Map<String, dynamic> json) => ProductImage(

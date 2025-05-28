@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
+import 'package:project_shop/data/response_models/products/product_attribute_model.dart';
 
 part 'products_model.g.dart';
 
@@ -65,6 +66,8 @@ class ProductsModel {
   @JsonKey(name: 'product_images')
   final List<ProductImage>? productImages;
 
+  final List<ProductAttributeModel>? attribute;
+
   ProductsModel({
     this.id,
     this.categoryId,
@@ -87,6 +90,7 @@ class ProductsModel {
     this.updatedAt,
     this.category,
     this.productImages,
+    this.attribute,
   });
 
   factory ProductsModel.fromJson(Map<String, dynamic> json) =>

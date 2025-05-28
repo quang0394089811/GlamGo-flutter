@@ -3,12 +3,12 @@
 ///  FlutterGen
 /// *****************************************************
 
+import 'package:flutter/material.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/painting.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorName {
@@ -188,6 +188,7 @@ class ColorName {
   static const orange15 = Color(0xffF59E0B);
   static const orange16 = Color(0xffD97706);
   static const orange17 = Color(0xffED7549);
+  static const orange18 = Color(0xFFFD571A);
 
   //White.
   static const white = Color(0xffffffff);
