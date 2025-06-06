@@ -6,8 +6,8 @@ import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/image_base/products_image_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
-import 'package:project_shop/widgets/simple_row_content.dart';
-import 'package:project_shop/widgets/simple_row_widget.dart';
+import 'package:project_shop/widgets/simple_rows/simple_row_content.dart';
+import 'package:project_shop/widgets/simple_rows/simple_row_widget.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
 class ProductsItemWishlist extends StatelessWidget {

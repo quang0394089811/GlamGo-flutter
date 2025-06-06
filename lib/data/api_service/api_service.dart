@@ -36,6 +36,6 @@ abstract class ApiService {
   @GET(ArticleAction.getCategoriesArticle)
   Future<BaseResponse<List<CategoryModel>>> getCategoriesArticle();
 
-  // @GET(ImageAction.getBanner)
-  // Future<BaseResponse<List<String>>> getBanner();
+  @GET(ImageAction.getBanner)
+  Future<BaseResponse<List<ProductImage>>> getBanner();
 }

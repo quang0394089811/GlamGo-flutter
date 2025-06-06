@@ -1,6 +1,6 @@
 class AppConfigs {
   // static String hostUrl = 'http://192.168.0.105:8000';
-  static String hostUrl = 'http://192.168.110.14:8000';
+  static String hostUrl = 'http://192.168.1.252:8000';
   // static String hostUrl = 'http://10.10.252.81:8000';
   static String apiUrl = '/api/v1';
   static String baseUrl = '$hostUrl$apiUrl';

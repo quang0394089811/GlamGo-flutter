@@ -1,13 +1,20 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:project_shop/base/app_exception.dart';
 import 'package:project_shop/base/base_controller.dart';
 import 'package:project_shop/data/repository/categories_action/categories_repository.dart';
 import 'package:project_shop/data/response_models/categories/category_model.dart';
 import 'package:project_shop/data/response_models/products/products_model.dart';
+import 'package:project_shop/data/secure_storage/share_preference_manager.dart';
 import 'package:project_shop/features/wishlist/wish_list_controller.dart';
+import 'package:project_shop/utils/constant.dart';
 
 class HomeController extends BaseController {
+  final SharedPreferencesManager prefManager = Get.find();
+
   final _currentIndex = 0.obs;
+
   get currentIndex => _currentIndex.value;
 
   final _categoriesRepository = Get.find<CategoriesRepository>();
@@ -41,6 +48,9 @@ class HomeController extends BaseController {
   final RxList<CategoryModel> _listCategories = <CategoryModel>[].obs;
   List<CategoryModel> get listCategories => _listCategories;
 
+  final RxList<ProductImage> _listBanner = <ProductImage>[].obs;
+  List<ProductImage> get listBanner => _listBanner;
+
   final RxList<ProductsModel> _listAllProducts = <ProductsModel>[].obs;
   List<ProductsModel> get listAllProducts => _listAllProducts;
 
@@ -58,6 +68,7 @@ class HomeController extends BaseController {
 
   @override
   void onInit() {
+    getBanner();
     getCategories();
     getProducts();
     super.onInit();
@@ -79,6 +90,31 @@ class HomeController extends BaseController {
     _currentIndex.value = index;
   }
 
+  Future<void> getBanner() async {
+    try {
+      // _listBanner.clear();
+      final response = await _categoriesRepository.getBanner();
+      response.fold(
+        (error) async {
+          appException.value = error;
+          _isLoadingProduct.value = false;
+
+          loadBannerLocal();
+        },
+        (result) {
+          final banners = result.data ?? <ProductImage>[];
+          _listBanner.assignAll(banners);
+          loadBannerLocal();
+          _isLoadingProduct.value = false;
+        },
+      );
+    } catch (e) {
+      _isLoadingProduct.value = false;
+      appException.value = AppException(message: e.toString());
+      loadBannerLocal();
+    }
+  }
+
   Future<void> getCategories() async {
     isLoading.value = true;
     try {
@@ -87,6 +123,7 @@ class HomeController extends BaseController {
         (error) {
           appException.value = error;
           isLoading.value = false;
+          print("Error getCategories: ${error.message}");
         },
         (result) {
           _listCategories.assignAll(result.data ?? []);
@@ -159,6 +196,20 @@ class HomeController extends BaseController {
       appException.value = AppException(message: e.toString());
       _productsByCategory.clear();
       _isLoadingProductByCa.value = false;
+    }
+  }
+
+  Future<void> loadBannerLocal() async {
+    if (_listBanner.isNotEmpty) return;
+    final cachedJsonList =
+        prefManager.getStringList(Constant.KEY_LIST_BANNER) ?? [];
+
+    if (cachedJsonList.isNotEmpty) {
+      final cachedBanners = cachedJsonList
+          .map((e) => ProductImage.fromJson(jsonDecode(e)))
+          .toList();
+
+      _listBanner.assignAll(cachedBanners);
     }
   }
 }

@@ -18,26 +18,30 @@ class AttributeCustom extends StatelessWidget {
     final isSelected = name == selectedAttribute;
 
     return GestureDetector(
-      onTap: () => onTap(name),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: ColorName.grey53,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: isSelected ? ColorName.orange18 : Colors.transparent,
-            width: 1.5,
+        onTap: () => onTap(name),
+        child: Container(
+          constraints: BoxConstraints(
+            minWidth: 60,
+            maxWidth: MediaQuery.of(context).size.width - 48,
           ),
-        ),
-        child: Text(
-          name,
-          style: TextStyle(
-            color: isSelected ? ColorName.orange18 : Colors.black,
-            fontWeight: FontWeight.bold,
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: ColorName.grey53,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isSelected ? ColorName.orange18 : ColorName.green17,
+              width: 1,
+            ),
           ),
-        ),
-      ),
-    );
+          child: Text(
+            name,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(
+              color: isSelected ? ColorName.orange18 : Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
   }
 }

@@ -112,42 +112,46 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notify.svg
   String get notify => 'assets/icons/notify.svg';
 
+  /// File path: assets/icons/ic_send.svg
+  String get icSend => 'assets/icons/ic_send.svg';
+
   /// List of all assets
   List<dynamic> get values => [
-    icAddCart,
-    icAddToCart,
-    icArrowRight,
-    icArrowRightNew,
-    icBackgroundLocation,
-    icClear,
-    icClose,
-    icContactBook,
-    icDelete,
-    icDeleteTableV1,
-    icEditDocument,
-    icFailToast,
-    icHeart,
-    icHeartOutlined,
-    icHome,
-    icHomeActive,
-    icHomeOutlined,
-    icInformation,
-    icLeftArrow,
-    icLocation,
-    icLogout,
-    icNotification,
-    icPaper,
-    icPower,
-    icRemoteTable,
-    icSetting,
-    icShoppingBag,
-    icStar,
-    icStore,
-    icSuccessToast,
-    icUser,
-    icWarningToast,
-    notify,
-  ];
+        icAddCart,
+        icAddToCart,
+        icArrowRight,
+        icArrowRightNew,
+        icBackgroundLocation,
+        icClear,
+        icClose,
+        icContactBook,
+        icDelete,
+        icDeleteTableV1,
+        icEditDocument,
+        icFailToast,
+        icHeart,
+        icHeartOutlined,
+        icHome,
+        icHomeActive,
+        icHomeOutlined,
+        icInformation,
+        icLeftArrow,
+        icLocation,
+        icLogout,
+        icNotification,
+        icPaper,
+        icPower,
+        icRemoteTable,
+        icSetting,
+        icShoppingBag,
+        icStar,
+        icStore,
+        icSuccessToast,
+        icUser,
+        icWarningToast,
+        notify,
+        icSend
+      ];
 }
 
 class $AssetsImagesGen {
@@ -215,23 +219,23 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
-    avatar,
-    banner,
-    biometric,
-    icHeart,
-    icHeartFill,
-    icLocation,
-    imgPlaceholder,
-    initCarousel,
-    introImage,
-    jinStoreLogo,
-    logo,
-    logoGreen,
-    logoIsland,
-    logoOrange,
-    logoWhite,
-    storeLogo,
-  ];
+        avatar,
+        banner,
+        biometric,
+        icHeart,
+        icHeartFill,
+        icLocation,
+        imgPlaceholder,
+        initCarousel,
+        introImage,
+        jinStoreLogo,
+        logo,
+        logoGreen,
+        logoIsland,
+        logoOrange,
+        logoWhite,
+        storeLogo,
+      ];
 }
 
 class Assets {

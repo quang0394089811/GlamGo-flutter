@@ -11,7 +11,7 @@ import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
 import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/image_base/base_image_widget.dart';
-import 'package:project_shop/widgets/simple_row_content.dart';
+import 'package:project_shop/widgets/simple_rows/simple_row_content.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 import 'package:readmore/readmore.dart';
 
@@ -259,31 +259,6 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                               },
                             ),
                           ),
-                          // SizedBox(
-                          //   height: 200,
-                          //   child: ListView.builder(
-                          //       shrinkWrap: true,
-                          //       physics: NeverScrollableScrollPhysics(),
-                          //       itemCount: controller.listAttribute.length,
-                          //       itemBuilder: (context, index) {
-                          //         final attributes =
-                          //             controller.listAttribute[index];
-                          //         return Obx(() {
-                          //           return ItemDetail(
-                          //             attribute: attributes,
-                          //             selected: controller
-                          //                 .getSelectedValue(attributes.id!),
-                          //             onSelected: (value) {
-                          //               controller.selectAttribute(
-                          //                 attributeId: attributes.id!,
-                          //                 value: value,
-                          //               );
-                          //               controller.printSelected();
-                          //             },
-                          //           );
-                          //         });
-                          //       }),
-                          // )
                         ],
                       );
                     }),
@@ -310,6 +285,10 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                     radius: 50,
                     textStyle: Styles.normalTextW500(color: ColorName.black),
                     textColor: ColorName.black,
+                    onPress: () async {
+                      await showModal(
+                          context, 'mua ngay', controller.printSelected);
+                    },
                   )),
                   SizedBox(width: 24),
                   Expanded(
@@ -327,5 +306,62 @@ class ProductDetailPage extends GetView<ProductDetailController> {
         ],
       ),
     );
+  }
+
+  Future<void> showModal(
+      BuildContext context, String? title, VoidCallback? onTap) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BaseImageWidget(
+                          path: '',
+                          heightImage: 150,
+                          widthImage: 120,
+                        ),
+                      ],
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: controller.listAttribute.length,
+                        itemBuilder: (context, index) {
+                          final attributes = controller.listAttribute[index];
+                          return Obx(() {
+                            return ItemDetail(
+                              attribute: attributes,
+                              selected:
+                                  controller.getSelectedValue(attributes.id!),
+                              onSelected: (value) {
+                                controller.selectAttribute(
+                                  attributeId: attributes.id!,
+                                  value: value,
+                                );
+                                controller.printSelected();
+                              },
+                            );
+                          });
+                        }),
+                    SizedBox(height: 12),
+                    IButton(
+                      title: 'Mua ngay',
+                      color: ColorName.black,
+                      textStyle: Styles.normalTextW600(color: ColorName.white), 
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

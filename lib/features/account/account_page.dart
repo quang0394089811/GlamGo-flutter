@@ -5,11 +5,10 @@ import 'package:project_shop/gen/assets.gen.dart';
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/routes/app_routes.dart';
 import 'package:project_shop/widgets/appbar_custom/custom_app_bar.dart';
-import 'package:project_shop/widgets/common/common_switch.dart';
 import 'package:project_shop/widgets/icon_widget/icon_widget.dart';
 import 'package:project_shop/widgets/inkwell/default_ink_well.dart';
 import 'package:project_shop/widgets/shimmer/shimmer_products.dart';
-import 'package:project_shop/widgets/simple_row_widget.dart';
+import 'package:project_shop/widgets/simple_rows/simple_row_widget.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
 class AccountPage extends StatelessWidget {
@@ -141,25 +140,25 @@ class AccountPage extends StatelessWidget {
           ),
           SimpleRowWidget(
             padding: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-            contentFirst: 'passWord'.tr,
+            contentFirst: 'Feedbcak'.tr,
             onTap: () {},
-            imageFirst: Assets.icons.icHomeOutlined,
+            imageFirst: Assets.icons.icSend,
           ),
-          SimpleRowWidget(
-            contentFirst: 'passWord'.tr,
-            onTap: () {},
-            imageFirst: Assets.icons.icHomeOutlined,
-            widget: CommonSwitch(
-              // value: controller.biometric,
-              enableColor: ColorName.red5,
-              disableColor: ColorName.grey34.withOpacity(0.16),
-              onChanged: (value) {
-                // controller.onSettingAccountBiometrics(
-                //     isEnable: value);
-              },
-              width: 45.w,
-            ),
-          ),
+          // SimpleRowWidget(
+          //   contentFirst: 'passWord'.tr,
+          //   onTap: () {},
+          //   imageFirst: Assets.icons.icHomeOutlined,
+          //   widget: CommonSwitch(
+          //     // value: controller.biometric,
+          //     enableColor: ColorName.red5,
+          //     disableColor: ColorName.grey34.withOpacity(0.16),
+          //     onChanged: (value) {
+          //       // controller.onSettingAccountBiometrics(
+          //       //     isEnable: value);
+          //     },
+          //     width: 45.w,
+          //   ),
+          // ),
         ],
       ),
     );

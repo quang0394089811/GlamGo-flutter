@@ -40,4 +40,6 @@ class Constant {
   static const KEY_FIRST_SHOW_ONBOARDING ='key_first_show_onboarding';
 
   static const KEY_WISH_LIST_PRODUCTS = 'key_wish_list_products';
+
+  static const KEY_LIST_BANNER = 'key_list_banner';
 }

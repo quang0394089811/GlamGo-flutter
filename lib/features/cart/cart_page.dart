@@ -4,7 +4,7 @@ import 'package:project_shop/features/products/widget/products_item_wish_list.da
 import 'package:project_shop/gen/colors.gen.dart';
 import 'package:project_shop/widgets/button/normal_button.dart';
 import 'package:project_shop/widgets/custom_divider.dart';
-import 'package:project_shop/widgets/simple_row_content.dart';
+import 'package:project_shop/widgets/simple_rows/simple_row_content.dart';
 import 'package:project_shop/widgets/styles_widget/styles_widget.dart';
 
 class CartPage extends StatelessWidget {
